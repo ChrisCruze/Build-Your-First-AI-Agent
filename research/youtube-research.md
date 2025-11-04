@@ -235,3 +235,26 @@ This response summarizes the key points and concepts from each of the sources pr
 * **Agentic Browsers:** Tools like Perplexity Comet, Cursor, and ChatGPT Atlas transform browsing into active, autonomous assistance, capable of multi-step task completion through natural language.  
 * **Blueprints:** **PRDs** (Product Requirements Documents) and **Technical Specifications** serve as the crucial, machine-readable **blueprints for AI agents**, translating high-level vision into functional requirements and implementation details.
 
+
+***
+
+### Specific YouTube Links Found in Works Cited
+
+While the URLs for the above transcripts are missing, the sources do cite several YouTube links in the works cited sections, which often reference related concepts or tutorials:
+
+| Source Context / Title Mentioned | URL | Citation |
+| :--- | :--- | :--- |
+| This Simple AI Agent manages your Email & Calendar (Free Course) | `https://www.youtube.com/watch?v=0GaH2Pj0gr0` | |
+| How I Built a Personal AI Assistant with Advanced Email & Calendar AI Agents on n8n (No Code) | `https://www.youtube.com/watch?v=hespEQ5LDCw` | |
+| The AI Agent Tutorial That Should've Been Your First (no code ...) | `https://www.youtube.com/watch?v=GchXMRwuWxE` | |
+| Perplexity's new AI agents are INSANE | `https://www.youtube.com/watch?v=g8JM3prvEf4` | |
+| Claude Skills: Build Your Own AI Experts (Full Breakdown) | `https://www.youtube.com/watch?v=46zQX7PSHfU` | |
+| How to Use ChatGPT's Deep Research to Save HOURS on Research | `https://www.youtube.com/watch?v=ld3XMuXwLcE` | |
+| Perplexity's NEW Deep Research Feature is MIND-BLOWING (The BEST FREE AI Research Tool) | `https://www.youtube.com/watch?v=PQNA4BCdPUc` | |
+| Turn your drawings into working marketing apps in minutes with Gemini Canvas | `https://www.youtube.com/watch?v=7dsaxBUZPII` | |
+| I ranked every AI Coder: Bolt vs. Cursor vs. Replit vs Lovable | `https://www.youtube.com/watch?v=Ojk51mNOUow` | |
+| AI Builds a Mobile App in Minutes (Full Rork AI No-Code Tutorial) | `https://www.youtube.com/watch?v=ER1SF0qwMTE` | |
+| Step-by-Step AI Agent Tutorial: Build, Test, and Deploy with ADK | `https://www.youtube.com/watch?v=p0iMDGBMtrc` | |
+| Genspark's Super AI Agent is INSANE | `https://www.youtube.com/watch?v=Ias7J4TjyYw` | |
+| Insane AI Tool Lets Me Code 3x Faster (Wispr Flow Walkthrough ...) | `https://www.youtube.com/watch?v=6JDVxu5_npc` | |
+| The AI Dictation Tool That Changed Everything (Wispr Flow AI Review and Tutorial) | `https://www.youtube.com/watch?v=UP6tV_JrCfU` | |
