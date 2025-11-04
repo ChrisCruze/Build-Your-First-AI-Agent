@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifeOS — Design & Navigation Framework</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --surface: #ffffff;
+      --surface-alt: #f3f4f6;
+      --text-primary: #0f172a;
+      --text-secondary: #4b5563;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.08);
+      --border: #e5e7eb;
+      --shadow: 0 20px 45px -24px rgba(15, 23, 42, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-primary);
+      background-color: var(--bg);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+      max-width: 1440px;
+      margin: 0 auto;
+      background-color: var(--bg);
+    }
+
+    nav {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .brand h1 {
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nav-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: var(--text-secondary);
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-item.active,
+    .nav-item:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .nav-item svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+
+    .main-content {
+      padding: 48px 64px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 24px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1.1rem;
+    }
+
+    .hero .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px -20px rgba(37, 99, 235, 0.8);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .section-header span {
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .section-header h3 {
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .two-column {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .three-column {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: 18px;
+      padding: 28px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      box-shadow: 0 24px 40px -32px rgba(15, 23, 42, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .card h4 {
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+    }
+
+    .card-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card-link .cta {
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: var(--text-secondary);
+    }
+
+    .card ol {
+      margin: 0;
+      padding-left: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: var(--text-secondary);
+    }
+
+    .project-tiles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-tile {
+      background: linear-gradient(160deg, rgba(37, 99, 235, 0.08), rgba(37, 99, 235, 0));
+      border-radius: 22px;
+      padding: 32px;
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      box-shadow: 0 28px 50px -40px rgba(37, 99, 235, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .progress-ring {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 6px solid rgba(37, 99, 235, 0.16);
+      border-top-color: var(--accent);
+    }
+
+    .tile-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tile-meta span {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .tile-next-action {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(15, 23, 42, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tile-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.12);
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-list li {
+      list-style: none;
+      background: var(--surface-alt);
+      border-radius: 14px;
+      padding: 16px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      background: var(--surface);
+      border-radius: 18px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      padding: 24px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .timeline-item span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .split-panel {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: grid;
+      gap: 8px;
+    }
+
+    footer {
+      padding: 48px 0 16px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 1200px) {
+      .app-shell {
+        grid-template-columns: 240px 1fr;
+      }
+
+      .main-content {
+        padding: 40px 40px 56px;
+      }
+
+      .project-tiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .three-column {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 960px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        position: relative;
+        flex-direction: row;
+        gap: 16px;
+        height: auto;
+        padding: 24px 32px;
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .brand {
+        min-width: 200px;
+      }
+
+      .nav-group {
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      .nav-item {
+        padding: 10px 14px;
+        border-radius: 10px;
+        white-space: nowrap;
+      }
+
+      .main-content {
+        padding: 32px 24px 48px;
+      }
+
+      .project-tiles,
+      .feature-list,
+      .three-column,
+      .two-column,
+      .split-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h2 {
+        font-size: 2.35rem;
+      }
+
+      .hero .actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <nav>
+      <div class="brand">
+        <h1>LifeOS</h1>
+        <span>Design & Navigation Framework</span>
+      </div>
+      <div class="nav-group">
+        <div class="nav-label">Primary Navigation</div>
+        <a class="nav-item active" href="#command-center">
+          <span>🏠</span>
+          Command Center
+        </a>
+        <a class="nav-item" href="#inbox">
+          <span>📥</span>
+          Inbox
+        </a>
+        <a class="nav-item" href="#projects">
+          <span>📊</span>
+          Projects
+        </a>
+        <a class="nav-item" href="#calendar">
+          <span>📅</span>
+          Calendar
+        </a>
+        <a class="nav-item" href="#fitness">
+          <span>💪</span>
+          Fitness
+        </a>
+        <a class="nav-item" href="#friends">
+          <span>🤝</span>
+          Friends
+        </a>
+        <a class="nav-item" href="#agents">
+          <span>🤖</span>
+          Agents
+        </a>
+        <a class="nav-item" href="#reports">
+          <span>📈</span>
+          Reports
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-label">Application Suites</div>
+        <a class="nav-item" href="apps.html">
+          <span>🗂️</span>
+          LifeOS Apps
+        </a>
+        <a class="nav-item" href="apps/todoist-project-planning.html">
+          <span>📝</span>
+          Todoist Project Planning
+        </a>
+        <a class="nav-item" href="apps/airtable-tasks.html">
+          <span>📊</span>
+          Airtable Tasks
+        </a>
+        <a class="nav-item" href="apps/gtd-workflow.html">
+          <span>🔄</span>
+          GTD Workflow
+        </a>
+        <a class="nav-item" href="apps/project-timer.html">
+          <span>⏱️</span>
+          Project Timer
+        </a>
+        <a class="nav-item" href="apps/natural-planning.html">
+          <span>🧭</span>
+          Natural Planning Model
+        </a>
+        <a class="nav-item" href="apps/artifacts-viewer.html">
+          <span>📚</span>
+          Artifacts Viewer
+        </a>
+        <a class="nav-item" href="apps/todoist-sorter.html">
+          <span>🗂️</span>
+          Todoist Sorter
+        </a>
+        <a class="nav-item" href="apps/product-showcase.html">
+          <span>🛍️</span>
+          Product Showcase
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-label">Core Docs</div>
+        <a class="nav-item" href="#migration">Migration Strategy</a>
+        <a class="nav-item" href="#timeboxing">Timeboxing</a>
+        <a class="nav-item" href="#roadmap">Implementation</a>
+        <a class="nav-item" href="lifeos-operating-system.html">LifeOS Overview</a>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <header class="hero">
+        <span class="nav-label">LifeOS Design & Navigation Framework</span>
+        <h2>Building your command center for a unified, intelligent life operating system.</h2>
+        <p>
+          LifeOS transforms scattered productivity tools into a cohesive operating system. A persistent navigation backbone, AI-assisted workflows, and deeply integrated context switching give you a cockpit-level view of every area of your life.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#command-center">Explore the Command Center</a>
+          <a class="btn btn-secondary" href="#roadmap">View Implementation Roadmap</a>
+        </div>
+      </header>
+
+      <section id="key-apps" aria-labelledby="key-apps-title">
+        <div class="section-header">
+          <span id="key-apps-title">LifeOS Application Suites</span>
+          <h3>The operational tools that activate each pillar of the OS.</h3>
+          <p>
+            Dedicated applications extend the LifeOS framework into daily execution—from urgent task triage to hydration habits.
+            Explore the suites to connect strategy, action, and reflection across your life.
+          </p>
+        </div>
+        <div class="section-grid two-column">
+          <a class="card card-link" href="apps/todoist-project-planning.html">
+            <h4>📝 Todoist Project Planning</h4>
+            <p>Blueprint for aligning Todoist projects with LifeOS rituals, automation, and reviews.</p>
+            <span class="cta">Open the app →</span>
+          </a>
+          <a class="card card-link" href="apps/airtable-tasks.html">
+            <h4>📊 Airtable Tasks</h4>
+            <p>Project timer and fields management with Airtable integration for comprehensive task tracking.</p>
+            <span class="cta">Open the app →</span>
+          </a>
+          <a class="card card-link" href="apps/gtd-workflow.html">
+            <h4>🔄 GTD Workflow</h4>
+            <p>Complete Getting Things Done workflow with capture, clarify, organize, engage, and review stages.</p>
+            <span class="cta">Open the app →</span>
+          </a>
+          <a class="card card-link" href="apps/project-timer.html">
+            <h4>⏱️ Project Timer</h4>
+            <p>Time tracking and project management with detailed metrics and field editing capabilities.</p>
+            <span class="cta">Open the app →</span>
+          </a>
+          <a class="card card-link" href="apps/natural-planning.html">
+            <h4>🧭 Natural Planning Model</h4>
+            <p>Guided Natural Planning workspace with Airtable sync and a wizard for step-by-step project design.</p>
+            <span class="cta">Open the app →</span>
+          </a>
+          <a class="card card-link" href="apps/artifacts-viewer.html">
+            <h4>📚 Artifacts Viewer</h4>
+            <p>View and browse all generated documents and insights from your Airtable Artifacts table.</p>
+            <span class="cta">Open the app →</span>
+          </a>
+          <a class="card card-link" href="apps/todoist-sorter.html">
+            <h4>🗂️ Todoist Sorter</h4>
+            <p>Review, sort, and optimize your Todoist projects with AI assistance and smart categorization.</p>
+            <span class="cta">Open the app →</span>
+          </a>
+          <a class="card card-link" href="apps/product-showcase.html">
+            <h4>🛍️ Product Showcase</h4>
+            <p>Interactive gallery surfacing key organizational initiatives with smart filtering and category insights.</p>
+            <span class="cta">Open the app →</span>
+          </a>
+          <a class="card card-link" href="apps.html#productivity-systems">
+            <h4>🗂 Productivity &amp; Systems</h4>
+            <p>Mission control for projects, tasks, knowledge management, and goal reviews.</p>
+            <span class="cta">Explore the suite →</span>
+          </a>
+          <a class="card card-link" href="apps.html#health-wellness">
+            <h4>💪 Health &amp; Wellness</h4>
+            <p>Integrated trackers for training cycles, recovery routines, and day-to-day wellbeing.</p>
+            <span class="cta">Explore the suite →</span>
+          </a>
+          <a class="card card-link" href="apps.html#life-management">
+            <h4>👤 Life Management &amp; Lifestyle</h4>
+            <p>Design habits, adventures, and relationship rituals that make life feel intentional.</p>
+            <span class="cta">Explore the suite →</span>
+          </a>
+          <a class="card card-link" href="apps.html#assets-upkeep">
+            <h4>📦 Assets &amp; Upkeep</h4>
+            <p>Keep gear, spaces, and creative resources organized with maintenance automations.</p>
+            <span class="cta">Explore the suite →</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="navigation" aria-labelledby="navigation-title">
+        <div class="section-header">
+          <span id="navigation-title">Navigation Architecture</span>
+          <h3>The seamless flow of mission control navigation.</h3>
+          <p>
+            Persistent side navigation, stateful context switching, and AI-driven routing keep every workflow one click away. LifeOS remembers where you were in each view, preserving momentum across Command Center, Projects, Calendar, and more.
+          </p>
+        </div>
+        <div class="section-grid two-column">
+          <article class="card">
+            <h4>Primary Navigation Hub</h4>
+            <p>Core sections stay within reach, with state preservation ensuring frictionless jumps between life domains.</p>
+            <ul>
+              <li>🏠 Command Center — main dashboard</li>
+              <li>📥 Inbox — unified capture & processing</li>
+              <li>📊 Projects — deep project views & timers</li>
+              <li>📅 Calendar — energy-aware scheduling</li>
+              <li>💪 Fitness — holistic health analytics</li>
+              <li>🤝 Friends — relationship intelligence</li>
+              <li>🤖 Agents — AI copilots across workflows</li>
+              <li>📈 Reports — progress & performance insights</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Seamless Context Switching</h4>
+            <p>
+              Each module preserves working state so you can start a timer, check follow-ups, and resume a planning session without losing context.
+            </p>
+            <ul>
+              <li>Stateful navigation with memory across sections</li>
+              <li>Instant return to prior focus in each workspace</li>
+              <li>Consistent surface language for reduced cognitive load</li>
+              <li>AI routing suggests next best location</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="command-center" aria-labelledby="command-center-title">
+        <div class="section-header">
+          <span id="command-center-title">Command Center</span>
+          <h3>Your productivity cockpit for active mission control.</h3>
+          <p>Large project tiles align time, attention, and next actions. Timeboxing, context panels, and AI coach prompts keep every session intentional.</p>
+        </div>
+        <div class="project-tiles">
+          <article class="project-tile">
+            <div class="tile-meta">
+              <div>
+                <h4>Deep Work Initiative</h4>
+                <p>Phase: Strategy Sprint</p>
+              </div>
+              <div class="progress-ring" aria-hidden="true"></div>
+            </div>
+            <div class="tile-next-action">
+              <span class="nav-label">Next Action</span>
+              <p>Review AI insights and define deliverables for the upcoming design review.</p>
+            </div>
+            <div class="tile-links">
+              <span class="chip">Start Timer</span>
+              <span class="chip">Briefing Notes</span>
+              <span class="chip">Focus Playlist</span>
+            </div>
+            <p><strong>Weekly Time Allocation:</strong> 6.5h logged • +12% vs target</p>
+          </article>
+          <article class="project-tile">
+            <div class="tile-meta">
+              <div>
+                <h4>AI Agent Launch</h4>
+                <p>Phase: Build & Train</p>
+              </div>
+              <div class="progress-ring" aria-hidden="true"></div>
+            </div>
+            <div class="tile-next-action">
+              <span class="nav-label">Next Action</span>
+              <p>Run training prompts for Connector Agent and validate follow-up cadence.</p>
+            </div>
+            <div class="tile-links">
+              <span class="chip">Start Timer</span>
+              <span class="chip">Prompt Library</span>
+              <span class="chip">Agent Metrics</span>
+            </div>
+            <p><strong>Weekly Time Allocation:</strong> 4.2h logged • On track</p>
+          </article>
+          <article class="project-tile">
+            <div class="tile-meta">
+              <div>
+                <h4>Fitness Systems</h4>
+                <p>Phase: Insight Integration</p>
+              </div>
+              <div class="progress-ring" aria-hidden="true"></div>
+            </div>
+            <div class="tile-next-action">
+              <span class="nav-label">Next Action</span>
+              <p>Sync wearable data and review performance correlations for the week.</p>
+            </div>
+            <div class="tile-links">
+              <span class="chip">Start Timer</span>
+              <span class="chip">Recovery Protocol</span>
+              <span class="chip">Hydration Log</span>
+            </div>
+            <p><strong>Weekly Time Allocation:</strong> 5.0h logged • Needs review</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="section-header">
+          <span id="projects-title">Projects Workspace</span>
+          <h3>See active missions, backlog priorities, and completed wins in one flow.</h3>
+          <p>A dedicated projects hub balances focus on high-value missions while keeping supporting work organized and searchable.</p>
+        </div>
+        <div class="section-grid three-column">
+          <article class="card">
+            <h4>Active Missions</h4>
+            <p>3-4 tiles stay pinned at the top with rich context, live timers, and quick actions.</p>
+            <ul>
+              <li>Visual progress rings with weekly targets</li>
+              <li>Contextual resources surfaced automatically</li>
+              <li>AI-suggested next actions refreshed daily</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Backlog Intelligence</h4>
+            <p>Secondary grid keeps incubating ideas ready without cluttering the focus view.</p>
+            <ul>
+              <li>Rank by impact, effort, or due date</li>
+              <li>Batch promote to active in weekly review</li>
+              <li>Capture notes and dependencies inline</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Completion Archive</h4>
+            <p>Celebrate progress while keeping learnings and documentation searchable.</p>
+            <ul>
+              <li>Auto-generated summaries from last session notes</li>
+              <li>Linked artifacts and deliverables retained</li>
+              <li>Insights feed into reporting trends</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="smart-timer" aria-labelledby="smart-timer-title">
+        <div class="section-header">
+          <span id="smart-timer-title">Smart Timer Flow</span>
+          <h3>AI-powered context delivery every time you press start.</h3>
+        </div>
+        <div class="section-grid two-column">
+          <article class="card">
+            <h4>Timer Activation Experience</h4>
+            <ul>
+              <li>Instant timer start with no friction or configuration.</li>
+              <li>Sliding context panel surfaces tasks, notes, and prompts.</li>
+              <li>AI Timebox Coach offers focus cues aligned with goals.</li>
+              <li>Todoist tasks and previous session notes appear automatically.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Focus Reinforcement</h4>
+            <p>Visual cues show commitment to the timebox while accountability badges celebrate completion. Insights feed directly into reports.</p>
+            <ul>
+              <li>Focus streaks and reflections for continuous improvement.</li>
+              <li>Adaptive prompts based on energy and progress.</li>
+              <li>AI-generated summary logged at session end.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="inbox" aria-labelledby="inbox-title">
+        <div class="section-header">
+          <span id="inbox-title">Unified Inbox</span>
+          <h3>The capture layer for everything entering LifeOS.</h3>
+          <p>All inputs arrive in one triage space. Keyboard-driven workflows, AI routing, and drag-and-drop move items into the right systems in seconds.</p>
+        </div>
+        <div class="split-panel">
+          <article class="card">
+            <h4>Inbox Categories</h4>
+            <ul>
+              <li>Tasks from Todoist, email, quick captures</li>
+              <li>Notes & ideas for Second Brain intake</li>
+              <li>Friend updates & social follow-ups</li>
+              <li>Health data syncs & manual entries</li>
+              <li>Financial items including subscriptions & revenue</li>
+            </ul>
+          </article>
+          <aside class="highlight">
+            <h4>Processing Workflow</h4>
+            <p>AI Strategist categorizes items, suggesting destination projects or contexts. Batch processing with shortcuts accelerates weekly reviews.</p>
+            <ul>
+              <li>Drag-and-drop triage to projects, calendar, or agents</li>
+              <li>Auto-routing rules for recurring items</li>
+              <li>Batch confirm suggested actions</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="calendar" aria-labelledby="calendar-title">
+        <div class="section-header">
+          <span id="calendar-title">Calendar & Timeboxing</span>
+          <h3>Energy-aware scheduling that keeps commitments honest.</h3>
+        </div>
+        <div class="section-grid two-column">
+          <article class="card">
+            <h4>Timeboxing Features</h4>
+            <ul>
+              <li>Color-coded blocks by energy level and project type</li>
+              <li>Context tags (Deep Work, Admin, Errands, Gym, Social)</li>
+              <li>AI scheduling assistant optimized around energy patterns</li>
+              <li>Commitment tracking showing planned vs actual</li>
+              <li>Automatic flexibility buffers for interruptions</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Energy-Aware Scheduling</h4>
+            <ul>
+              <li>Peak hours reserved for high-cognitive tasks</li>
+              <li>Low-energy windows for routine work</li>
+              <li>Transition buffers between major context switches</li>
+              <li>Weekly retrospectives to adjust future allocations</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="fitness" aria-labelledby="fitness-title">
+        <div class="section-header">
+          <span id="fitness-title">Fitness & Health Integration</span>
+          <h3>Holistic performance insights connecting body and output.</h3>
+        </div>
+        <div class="section-grid two-column">
+          <article class="card">
+            <h4>Comprehensive Health Dashboard</h4>
+            <ul>
+              <li>Core metrics: weight, water, sleep, workouts</li>
+              <li>Activity tracking for runs, gym sessions, movement</li>
+              <li>Goal progress visualization with trend indicators</li>
+              <li>Recovery insights to guide rest days</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>AI Performance Coach</h4>
+            <p>Correlate behavior with output to reinforce high-performance habits.</p>
+            <ul>
+              <li>"Run 3+ miles → deep work focus +40%"</li>
+              <li>"Creativity peaks 2 hours after morning workouts"</li>
+              <li>"Low water intake = afternoon energy crash"</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="friends" aria-labelledby="friends-title">
+        <div class="section-header">
+          <span id="friends-title">Friends CRM</span>
+          <h3>Relationship intelligence that keeps you connected.</h3>
+        </div>
+        <div class="section-grid three-column">
+          <article class="card">
+            <h4>Contact Intelligence</h4>
+            <p>Contact cards display last interaction, context, and next suggested touchpoint.</p>
+            <ul>
+              <li>Relationship mapping across circles</li>
+              <li>Conversation notes for continuity</li>
+              <li>Shared activity and event planning</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Follow-up Automation</h4>
+            <p>AI reminders surface in the inbox before relationships go cold.</p>
+            <ul>
+              <li>Suggested outreach cadences</li>
+              <li>Context-aware follow-up prompts</li>
+              <li>Timeboxing integration for social commitments</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>AI Connector Agent</h4>
+            <ul>
+              <li>"It's been 3 weeks since Sarah's job search update."</li>
+              <li>"Mark is ready to revisit the startup idea conversation."</li>
+              <li>"Plan an Austin meetup with four local friends."</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="agents" aria-labelledby="agents-title">
+        <div class="section-header">
+          <span id="agents-title">AI Agents</span>
+          <h3>Strategists, connectors, and coaches embedded throughout.</h3>
+        </div>
+        <div class="section-grid two-column">
+          <article class="card">
+            <h4>Embedded Intelligence</h4>
+            <p>LifeOS layers AI support on top of every workflow to reduce friction and drive better outcomes.</p>
+            <ul>
+              <li>Strategist: Suggests project assignments</li>
+              <li>Timebox Coach: Maintains focus and accountability</li>
+              <li>Connector: Manages social follow-through</li>
+              <li>Performance Analyst: Surfaces insights & reports</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Productivity Coach Philosophy</h4>
+            <ul>
+              <li>Visual cues highlight on-track metrics</li>
+              <li>Smart defaults minimize cognitive overhead</li>
+              <li>Friction reduction from capture to completion</li>
+              <li>Accountability loops reinforce commitments kept</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="reports" aria-labelledby="reports-title">
+        <div class="section-header">
+          <span id="reports-title">Reporting & Insights</span>
+          <h3>Understand the patterns behind performance.</h3>
+        </div>
+        <div class="section-grid two-column">
+          <article class="card">
+            <h4>Core Reporting Views</h4>
+            <ul>
+              <li>Weekly and monthly time allocation trends</li>
+              <li>Commitment vs completion insights</li>
+              <li>Health & productivity correlations</li>
+              <li>Social engagement rhythms</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Automated Summaries</h4>
+            <p>Reports ship with AI narratives that translate data into action-ready insights.</p>
+            <ul>
+              <li>Highlights momentum and friction points</li>
+              <li>Suggests adjustments to timeboxes and projects</li>
+              <li>Generates prompts for upcoming weeks</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="migration" aria-labelledby="migration-title">
+        <div class="section-header">
+          <span id="migration-title">Migration Strategy</span>
+          <h3>From fragmented systems to a unified LifeOS.</h3>
+        </div>
+        <div class="section-grid three-column">
+          <article class="card">
+            <h4>Phase 1 — Core Migration</h4>
+            <ul>
+              <li>Import project data and existing trackers</li>
+              <li>Connect Todoist tasks and automations</li>
+              <li>Sync historical fitness metrics</li>
+              <li>Merge calendars into a single view</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Phase 2 — Enhanced Integration</h4>
+            <ul>
+              <li>Import Second Brain note library</li>
+              <li>Transfer CRM relationship data</li>
+              <li>Connect expense and revenue tools</li>
+              <li>Archive AI prompts and templates</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Phase 3 — AI Enhancement</h4>
+            <ul>
+              <li>Train agents on historical performance data</li>
+              <li>Identify correlations across domains</li>
+              <li>Deploy predictive scheduling models</li>
+              <li>Automate weekly & monthly reporting</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="prompt-process" aria-labelledby="prompt-process-title">
+        <div class="section-header">
+          <span id="prompt-process-title">Prompt Process</span>
+          <h3>Systematic prompt management across every workflow.</h3>
+        </div>
+        <div class="section-grid two-column">
+          <article class="card">
+            <h4>Prompt Library Organization</h4>
+            <ul>
+              <li>Project-specific catalogs for active missions</li>
+              <li>Context-aware tags for energy, time, complexity</li>
+              <li>Version tracking to measure effectiveness</li>
+              <li>Shareable exports for team-wide leverage</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h4>Workflow Integration</h4>
+            <ol>
+              <li>Start a project timer to receive prompt suggestions.</li>
+              <li>Close a session and capture new prompts or insights.</li>
+              <li>Run weekly reviews to assess prompt performance.</li>
+              <li>Continuously refine library based on outcomes.</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section id="timeboxing" aria-labelledby="timeboxing-title">
+        <div class="section-header">
+          <span id="timeboxing-title">Deep Timeboxing</span>
+          <h3>The keystone behavior that powers LifeOS.</h3>
+        </div>
+        <div class="split-panel">
+          <article class="card">
+            <h4>Commitment Mechanism</h4>
+            <ul>
+              <li>Plan weekly allocations across all projects</li>
+              <li>Match energy levels with demand of work</li>
+              <li>Track planned vs actual to surface drift</li>
+              <li>Let AI adapt scheduling based on patterns</li>
+            </ul>
+          </article>
+          <aside class="highlight">
+            <h4>Behavioral Design</h4>
+            <p>LifeOS makes it effortless to start, stay focused, and celebrate completion so timeboxing becomes a default habit.</p>
+            <ul>
+              <li>One-click start to reduce friction</li>
+              <li>Gentle nudges maintain focus and accountability</li>
+              <li>Celebratory visuals reinforce completion</li>
+              <li>Reflection prompts close the learning loop</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="roadmap" aria-labelledby="roadmap-title">
+        <div class="section-header">
+          <span id="roadmap-title">Implementation Roadmap</span>
+          <h3>Build in phases to create your life operating system.</h3>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span>Weeks 1 - 3 · Foundation</span>
+            <p>Launch navigation, command center tiles, inbox processing, and Todoist integration to establish the core spine.</p>
+          </article>
+          <article class="timeline-item">
+            <span>Weeks 4 - 6 · Enhancement</span>
+            <p>Activate calendar timeboxing, fitness view, friends CRM, and migration tooling to unify critical data sources.</p>
+          </article>
+          <article class="timeline-item">
+            <span>Weeks 7 - 10 · Intelligence</span>
+            <p>Integrate AI agents, automated insights, smart scheduling, and reporting dashboards for proactive support.</p>
+          </article>
+          <article class="timeline-item">
+            <span>Ongoing · Optimization</span>
+            <p>Continuously refine UX, improve AI accuracy, expand features, and feed community-driven enhancements.</p>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        LifeOS — A unified operating system for life. Designed for clarity, focus, and intelligent action.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Agentic Revolution: Directing AI Agents in 2025</title>
+    <style>
+        /* Reset and Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            background: #ffffff;
+            color: #1d1d1f;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Stage Container */
+        .stage {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+        }
+
+        /* Slide System */
+        .slides-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 80px;
+            overflow-y: auto;
+        }
+
+        .slide.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: clamp(48px, 7vw, 84px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            text-align: center;
+            background: linear-gradient(180deg, #1d1d1f 0%, #424245 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: clamp(20px, 2.5vw, 32px);
+            font-weight: 500;
+            color: #6e6e73;
+            text-align: center;
+            line-height: 1.3;
+            margin-bottom: 48px;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(20px, 2.5vw, 28px);
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            letter-spacing: -0.015em;
+        }
+
+        /* Gradient Text Effects */
+        .gradient-text {
+            background: linear-gradient(90deg, #ff375f 0%, #ff9f0a 50%, #ffd60a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .blue-gradient {
+            background: linear-gradient(135deg, #007aff 0%, #0051d5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .purple-gradient {
+            background: linear-gradient(135deg, #af52de 0%, #5856d6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            width: 100%;
+            max-width: 1400px;
+            margin: 32px auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #007aff 0%, #5ac8fa 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.25);
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+
+        .feature-description {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.5;
+        }
+
+        /* Metric Display */
+        .metric-container {
+            display: flex;
+            gap: 48px;
+            align-items: center;
+            justify-content: center;
+            margin: 48px 0;
+            flex-wrap: wrap;
+        }
+
+        .metric {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .metric:nth-child(1) { animation-delay: 0.1s; }
+        .metric:nth-child(2) { animation-delay: 0.2s; }
+        .metric:nth-child(3) { animation-delay: 0.3s; }
+        .metric:nth-child(4) { animation-delay: 0.4s; }
+
+        .metric-value {
+            font-size: clamp(40px, 5vw, 64px);
+            font-weight: 700;
+            background: linear-gradient(180deg, #1d1d1f 0%, #424245 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            font-size: 16px;
+            color: #86868b;
+            font-weight: 500;
+        }
+
+        .metric-value.gradient {
+            background: linear-gradient(90deg, #ff375f 0%, #ff9f0a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Comparison Cards */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 1000px;
+            margin: 32px auto;
+        }
+
+        .comparison-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-card.highlighted {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.08) 0%, rgba(90, 200, 250, 0.08) 100%);
+            border-color: rgba(0, 122, 255, 0.2);
+            box-shadow: 0 16px 48px rgba(0, 122, 255, 0.15);
+        }
+
+        /* Chip/Badge Styles */
+        .chip-container {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 32px 0;
+        }
+
+        .chip {
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-size: 17px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #1d1d1f;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: chipAppear 0.5s ease forwards;
+        }
+
+        .chip:nth-child(1) { animation-delay: 0.1s; }
+        .chip:nth-child(2) { animation-delay: 0.2s; }
+        .chip:nth-child(3) { animation-delay: 0.3s; }
+        .chip:nth-child(4) { animation-delay: 0.4s; }
+
+        .chip.primary {
+            background: linear-gradient(135deg, #007aff 0%, #5ac8fa 100%);
+            border: none;
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.25);
+        }
+
+        .chip.success {
+            background: linear-gradient(135deg, #30d158 0%, #34c759 100%);
+            border: none;
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(52, 199, 89, 0.25);
+        }
+
+        /* Apple Event Style Background */
+        .event-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(245, 245, 247, 0.5) 80%);
+            z-index: -1;
+        }
+
+        .glow-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.1) 0%, transparent 70%);
+            filter: blur(80px);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .glow-orb.purple {
+            background: radial-gradient(circle, rgba(175, 82, 222, 0.08) 0%, transparent 70%);
+            animation-delay: -5s;
+            left: -300px;
+            top: -300px;
+        }
+
+        .glow-orb.blue {
+            right: -300px;
+            bottom: -300px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            padding: 16px 48px;
+            border-radius: 100px;
+            font-size: 19px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #007aff 0%, #5ac8fa 100%);
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 32px;
+            box-shadow: 0 8px 32px rgba(0, 122, 255, 0.25);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 48px rgba(0, 122, 255, 0.35);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid rgba(29, 29, 31, 0.2);
+            color: #1d1d1f;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(29, 29, 31, 0.05);
+            border-color: rgba(29, 29, 31, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        /* List Styles */
+        .bullet-list {
+            max-width: 900px;
+            margin: 32px auto;
+            text-align: left;
+        }
+
+        .bullet-list li {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            padding-left: 8px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: fadeInLeft 0.6s ease forwards;
+        }
+
+        .bullet-list li:nth-child(1) { animation-delay: 0.1s; }
+        .bullet-list li:nth-child(2) { animation-delay: 0.2s; }
+        .bullet-list li:nth-child(3) { animation-delay: 0.3s; }
+        .bullet-list li:nth-child(4) { animation-delay: 0.4s; }
+        .bullet-list li:nth-child(5) { animation-delay: 0.5s; }
+        .bullet-list li:nth-child(6) { animation-delay: 0.6s; }
+
+        .bullet-list strong {
+            color: #007aff;
+            font-weight: 600;
+        }
+
+        /* Code/Example Blocks */
+        .code-block {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #1d1d1f;
+            max-width: 800px;
+            margin: 24px auto;
+            text-align: left;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        /* Table Styles */
+        .tools-table {
+            width: 100%;
+            max-width: 1200px;
+            margin: 32px auto;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .tools-table th {
+            background: rgba(0, 122, 255, 0.1);
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #1d1d1f;
+            font-size: 16px;
+        }
+
+        .tools-table td {
+            padding: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            font-size: 15px;
+            color: #424245;
+        }
+
+        .tools-table tr:hover {
+            background: rgba(0, 122, 255, 0.05);
+        }
+
+        /* Quote/Highlight Styles */
+        .quote-box {
+            background: rgba(0, 122, 255, 0.08);
+            border-left: 4px solid #007aff;
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin: 32px auto;
+            max-width: 900px;
+            font-size: 18px;
+            font-style: italic;
+            color: #1d1d1f;
+            line-height: 1.6;
+        }
+
+        /* Definition Box */
+        .definition-box {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            max-width: 900px;
+            margin: 32px auto;
+            text-align: left;
+        }
+
+        .definition-box h3 {
+            margin-bottom: 16px;
+            color: #007aff;
+        }
+
+        .definition-box p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #424245;
+            margin-bottom: 16px;
+        }
+
+        /* Flow Diagram */
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin: 32px auto;
+            flex-wrap: wrap;
+            max-width: 1000px;
+        }
+
+        .flow-step {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            min-width: 150px;
+            font-weight: 600;
+            color: #007aff;
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: #86868b;
+        }
+
+        /* Resources List */
+        .resources-list {
+            max-width: 800px;
+            margin: 32px auto;
+            text-align: left;
+        }
+
+        .resources-list a {
+            display: block;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            color: #007aff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .resources-list a:hover {
+            background: rgba(0, 122, 255, 0.1);
+            transform: translateX(8px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes chipAppear {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+        }
+
+        /* Navigation Dots */
+        .navigation-dots {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 1000;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 100px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            max-width: 90vw;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .navigation-dots::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .dot.active {
+            background: #1d1d1f;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 24px;
+            }
+
+            h1 {
+                font-size: clamp(32px, 8vw, 48px);
+            }
+
+            .features-grid,
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-container {
+                gap: 32px;
+            }
+
+            .chip-container {
+                gap: 12px;
+            }
+
+            .chip {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+
+            .tools-table {
+                font-size: 12px;
+            }
+
+            .tools-table th,
+            .tools-table td {
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <div class="event-background">
+            <div class="glow-orb purple"></div>
+            <div class="glow-orb blue"></div>
+        </div>
+
+        <div class="slides-container">
+            <!-- Slide 1: Title Slide -->
+            <div class="slide visible">
+                <h1>The Agentic Revolution: <span class="gradient-text">Directing the Future</span> with AI Agents</h1>
+                <h2>Mastering Context Engineering, Orchestration, and System Thinking</h2>
+                <div class="chip-container">
+                    <div class="chip primary">AI Agents</div>
+                    <div class="chip">2025</div>
+                    <div class="chip success">Master Class</div>
+                </div>
+            </div>
+
+            <!-- Slide 2: The Agentic Revolution – Why It Matters -->
+            <div class="slide">
+                <h1>The Agentic Revolution: <span class="blue-gradient">Why It Matters</span></h1>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-title">Paradigm Shift</div>
+                        <div class="feature-description">40% reduction in low-value work, 50% faster processes (BCG, 2025)</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">Market Growth</div>
+                        <div class="feature-description">$9.8B in 2025 → $220.9B by 2035 (Nurix AI, 2025)</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">Maturity Gap</div>
+                        <div class="feature-description">Only 1% feel "mature" despite 92% planning increased investment (McKinsey, 2025)</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">Critical Skills</div>
+                        <div class="feature-description">Logical decomposition, context engineering, and agent orchestration replace traditional prompt engineering</div>
+                    </div>
+                </div>
+                <div class="quote-box">
+                    "AI agents are the most profound technology since electricity." — McKinsey, 2025
+                </div>
+            </div>
+
+            <!-- Slide 3: What Is an AI Agent? -->
+            <div class="slide">
+                <h1>What Is an <span class="purple-gradient">AI Agent</span>?</h1>
+                <div class="definition-box">
+                    <h3>Definition</h3>
+                    <p>An AI agent perceives its environment (sensors), reasons, plans, and acts (actuators) autonomously to achieve goals (Russell & Norvig).</p>
+                    
+                    <h3 style="margin-top: 24px;">PEAS Framework</h3>
+                    <ul class="bullet-list" style="list-style: none; padding-left: 0;">
+                        <li><strong>Performance Measure:</strong> Success metric (e.g., task accuracy, speed)</li>
+                        <li><strong>Environment:</strong> Digital platforms, APIs, databases</li>
+                        <li><strong>Actuators:</strong> Tools like API calls, generative outputs</li>
+                        <li><strong>Sensors:</strong> Inputs like text, RAG, or MCP data</li>
+                    </ul>
+
+                    <h3 style="margin-top: 24px;">Components</h3>
+                    <ul class="bullet-list" style="list-style: none; padding-left: 0;">
+                        <li><strong>Brain:</strong> LLM (e.g., Claude, GPT-5) for reasoning</li>
+                        <li><strong>Sensors:</strong> RAG for knowledge retrieval, MCP for live data</li>
+                        <li><strong>Actuators:</strong> Function/tool calling, MCP for actions</li>
+                        <li><strong>Memory:</strong> Short-term (context window), long-term (RAG)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Slide 4: Real-World Use Cases -->
+            <div class="slide">
+                <h1>Real-World <span class="gradient-text">Use Cases</span></h1>
+                <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                    <div class="feature-card">
+                        <div class="feature-icon">📰</div>
+                        <div class="feature-title">Newsletter Automation</div>
+                        <div class="feature-description">Claude sub-agents scan news, filter insights, saving 5 hours/week</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Competitor Analysis</div>
+                        <div class="feature-description">ChatGPT Atlas generates slide decks from multi-tab research in minutes</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-title">Meeting Notes & Follow-Ups</div>
+                        <div class="feature-description">Fireflies and Rube MCP automate recaps, reducing errors by 30%</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛠️</div>
+                        <div class="feature-title">IT Service Desk</div>
+                        <div class="feature-description">ServiceNow agents auto-resolve tickets, cutting cycles by 30%</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <div class="feature-title">Financial Operations</div>
+                        <div class="feature-description">Oracle Miracle Agent processes finance/HR workflows autonomously</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-title">Marketing Campaigns</div>
+                        <div class="feature-description">Salesforce Agentforce increases lead conversion by 25%</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏥</div>
+                        <div class="feature-title">Insurance Claims</div>
+                        <div class="feature-description">Agents triage, validate, and pay claims, reducing handling time by 40%</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <div class="feature-title">Software Development</div>
+                        <div class="feature-description">BMAD agents generate PRD.md, Architecture.md, ensuring traceable documentation</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: RAG -->
+            <div class="slide">
+                <h1>Retrieval-Augmented <span class="blue-gradient">Generation (RAG)</span></h1>
+                <div class="definition-box">
+                    <h3>Definition</h3>
+                    <p>RAG grounds agents in external knowledge bases (e.g., PDFs, company documents) to prevent hallucinations and ensure accuracy.</p>
+                    
+                    <h3 style="margin-top: 24px;">How It Works</h3>
+                    <div class="flow-diagram">
+                        <div class="flow-step">Query</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Vector Database</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">LLM Response</div>
+                    </div>
+                    
+                    <p style="margin-top: 24px;"><strong>Use Case:</strong> "Company Policy Bot" answers queries using a PDF manual, reducing errors by 30% (Domo, 2025).</p>
+                    <p><strong>Benefit:</strong> Enables long-term memory, overcoming context window limits. Acts as the "read-only library" for reliable, context-aware outputs.</p>
+                </div>
+            </div>
+
+            <!-- Slide 6: MCP -->
+            <div class="slide">
+                <h1>Model Context <span class="purple-gradient">Protocol (MCP)</span></h1>
+                <div class="definition-box">
+                    <h3>Definition</h3>
+                    <p>MCP standardizes agent-to-tool communication, enabling dynamic interactions with APIs, files, or systems (Anthropic, 2025).</p>
+                    
+                    <h3 style="margin-top: 24px;">Components</h3>
+                    <ul class="bullet-list" style="list-style: none; padding-left: 0;">
+                        <li><strong>Tools:</strong> Functions agents can execute</li>
+                        <li><strong>Resources:</strong> Data agents can access</li>
+                        <li><strong>Prompts:</strong> Instructions for agents</li>
+                    </ul>
+
+                    <div class="flow-diagram" style="margin-top: 32px;">
+                        <div class="flow-step">Agent</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Tool Discovery</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Action Execution</div>
+                    </div>
+                    
+                    <p style="margin-top: 24px;"><strong>Use Case:</strong> Rube.app uses MCP to connect agents to 500+ apps, automating marketing workflows.</p>
+                    <p><strong>Benefit:</strong> Acts as the "USB-C for AI," ensuring interoperability and secure actions. Contrast with RAG (action-oriented vs. knowledge-focused).</p>
+                </div>
+            </div>
+
+            <!-- Slide 7: Claude with Skills -->
+            <div class="slide">
+                <h1>Claude with <span class="gradient-text">Skills</span></h1>
+                <div class="definition-box">
+                    <h3>Definition</h3>
+                    <p>Claude Skills encapsulate multi-step workflows in reusable SKILL.md files, using progressive disclosure to optimize context (Anthropic, 2025).</p>
+                    
+                    <h3 style="margin-top: 24px;">How It Works</h3>
+                    <p>Skills are version-controlled, activated only when needed, reducing token usage.</p>
+                    
+                    <div class="code-block" style="margin-top: 24px;">
+                        # SKILL.md Example<br>
+                        ## Newsletter Writer Skill<br>
+                        - Scan news sources<br>
+                        - Filter insights<br>
+                        - Format summaries<br>
+                        - Generate weekly newsletter
+                    </div>
+                    
+                    <p style="margin-top: 24px;"><strong>Use Case:</strong> Newsletter writer automated research with Claude sub-agents, saving 5 hours/week (AIMaker, 2025).</p>
+                    <p><strong>Best Practices:</strong> Precise third-person descriptions, concise templates (&lt;500 lines), embedded feedback loops. Production-ready for complex, repeatable tasks.</p>
+                </div>
+            </div>
+
+            <!-- Slide 8: Browser-Based Agents -->
+            <div class="slide">
+                <h1>Browser-Based <span class="blue-gradient">Agents</span></h1>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌐</div>
+                        <div class="feature-title">Perplexity Comet</div>
+                        <div class="feature-description">Processes multiple tabs for research, eliminating manual summarization</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🗺️</div>
+                        <div class="feature-title">OpenAI Atlas</div>
+                        <div class="feature-description">Generates reports, finds local vendors. Created competitor analysis slide deck in minutes</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⌨️</div>
+                        <div class="feature-title">Cursor 2.0</div>
+                        <div class="feature-description">Automates coding within IDEs, transforming development workflows</div>
+                    </div>
+                </div>
+                <div class="quote-box" style="margin-top: 32px;">
+                    Agentic browsers read page context and automate web tasks, transforming passive browsing into active automation.
+                </div>
+            </div>
+
+            <!-- Slide 9: Tools and Capabilities -->
+            <div class="slide">
+                <h1>Tools and Their <span class="purple-gradient">Capabilities</span></h1>
+                <table class="tools-table">
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Type</th>
+                            <th>Key Capabilities</th>
+                            <th>Best Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>N8N</strong></td>
+                            <td>No-Code</td>
+                            <td>Visual multi-agent workflows, beginner-friendly</td>
+                            <td>Personal Research Assistant</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zapier</strong></td>
+                            <td>No-Code</td>
+                            <td>500+ app integrations, simplifies repetitive tasks</td>
+                            <td>Meeting notes automation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CrewAI</strong></td>
+                            <td>Code</td>
+                            <td>Role-based framework, hierarchical multi-agent systems</td>
+                            <td>Researcher, Writer teams</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LangGraph</strong></td>
+                            <td>Code</td>
+                            <td>State-driven graph framework, durable & auditable</td>
+                            <td>Complex production workflows</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AutoGen</strong></td>
+                            <td>Code</td>
+                            <td>Conversation-based, emergent collaboration</td>
+                            <td>Dynamic tasks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Claude SDK</strong></td>
+                            <td>Code</td>
+                            <td>Terminal-first, sub-agent architecture</td>
+                            <td>Documented workflows, JetBrains IDEs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rube.app</strong></td>
+                            <td>No-Code</td>
+                            <td>MCP-based, 500+ app connections</td>
+                            <td>Marketing/sales automation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Slide 10: ChatGPT/Claude with MCP -->
+            <div class="slide">
+                <h1>ChatGPT/Claude with <span class="gradient-text">MCP Integration</span></h1>
+                <div class="definition-box">
+                    <h3>Definition</h3>
+                    <p>ChatGPT and Claude use MCP to interact with external tools and apps, enabling complex workflows (e.g., via Rube.app).</p>
+                    
+                    <div class="flow-diagram" style="margin: 32px auto;">
+                        <div class="flow-step">ChatGPT/Claude</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">MCP</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Rube.app</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">500+ Apps</div>
+                    </div>
+                    
+                    <h3 style="margin-top: 32px;">How It Works</h3>
+                    <p>MCP facilitates API calls, file edits, or emails with human-in-the-loop approval.</p>
+                    
+                    <p style="margin-top: 24px;"><strong>Use Case:</strong> Automating meeting notes with Fireflies and Gmail follow-ups via Rube (Perplexity, 2025).</p>
+                    <p><strong>Benefit:</strong> Scales automation across 500+ apps, combining LLM reasoning with action. Rube makes MCP accessible for no-code users.</p>
+                </div>
+            </div>
+
+            <!-- Slide 11: Console.Anthropic.com -->
+            <div class="slide">
+                <h1>Console.Anthropic.com for <span class="blue-gradient">Prompt Engineering</span></h1>
+                <div class="definition-box">
+                    <h3>Definition</h3>
+                    <p>Anthropic's console is a hub for creating, testing, and refining prompts (Anthropic, 2025).</p>
+                    
+                    <div class="features-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 32px;">
+                        <div class="feature-card">
+                            <div class="feature-title">Rapid Iteration</div>
+                            <div class="feature-description">Test and refine prompts quickly</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">Debugging</div>
+                            <div class="feature-description">Identify and fix prompt issues</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">Workflow Testing</div>
+                            <div class="feature-description">Validate multi-step agent logic</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">Skill Development</div>
+                            <div class="feature-description">Craft Claude Skills for production</div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 32px; text-align: center;"><strong>Benefit:</strong> Simplifies prompt engineering for all skill levels. Essential for precise agent control.</p>
+                </div>
+            </div>
+
+            <!-- Slide 12: Best Practices -->
+            <div class="slide">
+                <h1>Best Practices for <span class="purple-gradient">Prompting AI Agents</span></h1>
+                <div class="definition-box">
+                    <h3>Five Fundamentals (Rick Mulready, 2025)</h3>
+                    <ul class="bullet-list" style="list-style: none; padding-left: 0;">
+                        <li><strong>1. Specificity:</strong> Define format, length, structure (e.g., XML tags)</li>
+                        <li><strong>2. Context:</strong> Include audience, goal, voice</li>
+                        <li><strong>3. Few-Shot Prompting:</strong> Provide examples for pattern matching</li>
+                        <li><strong>4. Structuring:</strong> Use CO-STAR (Context, Objective, Style, Tone, Audience, Response)</li>
+                        <li><strong>5. Iteration:</strong> Refine prompts, ask AI to self-critique (e.g., 10/10 score)</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 32px;">Agent Prompt Structure</h3>
+                    <div class="code-block" style="margin-top: 16px;">
+                        <strong>Role/Objective:</strong> Define the agent's purpose<br>
+                        <strong>Operating Instructions:</strong> Step-by-step process<br>
+                        <strong>Constraints:</strong> Limits and boundaries
+                    </div>
+                    
+                    <p style="margin-top: 24px; text-align: center;">Stress iterative prompting to unlock agent potential.</p>
+                </div>
+            </div>
+
+            <!-- Slide 13: Multi-Agent Systems -->
+            <div class="slide">
+                <h1>Multi-Agent Systems: <span class="gradient-text">Power of Collaboration</span></h1>
+                <div class="definition-box">
+                    <h3>Why MAS?</h3>
+                    <p>Overcomes single LLM limitations, enables specialization, improves memory via RAG.</p>
+                    
+                    <h3 style="margin-top: 32px;">Patterns</h3>
+                    <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="feature-card">
+                            <div class="feature-title">Sequential</div>
+                            <div class="feature-description">Tasks flow linearly (e.g., Searcher → Summarizer)</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">Hierarchical</div>
+                            <div class="feature-description">Orchestrator delegates to sub-agents</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">Parallel</div>
+                            <div class="feature-description">Sub-agents work simultaneously</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">Critique/Debate</div>
+                            <div class="feature-description">Agents review outputs for quality</div>
+                        </div>
+                    </div>
+                    
+                    <div class="quote-box" style="margin-top: 32px;">
+                        Compare MAS to human teams for efficiency gains. Each agent specializes, enabling complex workflows.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 14: Orchestrator Role -->
+            <div class="slide">
+                <h1>Orchestrator Role in <span class="blue-gradient">Multi-Agent Systems</span></h1>
+                <div class="definition-box">
+                    <h3>Definition</h3>
+                    <p>Orchestrator manages sub-agents, ensuring alignment and progress (uses ACP for communication).</p>
+                    
+                    <div class="flow-diagram" style="margin: 32px auto;">
+                        <div class="flow-step" style="background: linear-gradient(135deg, rgba(0, 122, 255, 0.2) 0%, rgba(90, 200, 250, 0.2) 100%);">Orchestrator</div>
+                        <div class="flow-arrow">↓</div>
+                        <div style="display: flex; gap: 16px;">
+                            <div class="flow-step">Searcher</div>
+                            <div class="flow-step">Summarizer</div>
+                            <div class="flow-step">Writer</div>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 32px;">Functions</h3>
+                    <ul class="bullet-list" style="list-style: none; padding-left: 0;">
+                        <li><strong>Task Decomposition:</strong> Break complex tasks into sub-tasks</li>
+                        <li><strong>Monitoring:</strong> Track progress and quality</li>
+                        <li><strong>Resource Allocation:</strong> Assign tasks to appropriate agents</li>
+                    </ul>
+                    
+                    <p style="margin-top: 24px;"><strong>Use Case:</strong> CrewAI Orchestrator assigns research tasks to Searcher and Summarizer (DeepLearning.AI, 2025).</p>
+                    <p><strong>Benefit:</strong> Reduces context bloat, enables scalable workflows. The "project manager" of MAS.</p>
+                </div>
+            </div>
+
+            <!-- Slide 15: N8N and Zapier -->
+            <div class="slide">
+                <h1>N8N and Zapier: <span class="purple-gradient">No-Code Powerhouses</span></h1>
+                <div class="comparison-container">
+                    <div class="comparison-card">
+                        <h3 style="color: #007aff; margin-bottom: 24px;">N8N</h3>
+                        <div class="feature-description" style="text-align: left; margin-bottom: 16px;">
+                            <strong>Visual node-based platform</strong> for multi-agent workflows
+                        </div>
+                        <div class="feature-description" style="text-align: left; margin-bottom: 16px;">
+                            <strong>Beginner-friendly</strong> with customizability
+                        </div>
+                        <div class="feature-description" style="text-align: left;">
+                            <strong>Use Case:</strong> Personal Research Assistant workflows
+                        </div>
+                    </div>
+                    <div class="comparison-card highlighted">
+                        <h3 style="color: #007aff; margin-bottom: 24px;">Zapier</h3>
+                        <div class="feature-description" style="text-align: left; margin-bottom: 16px;">
+                            <strong>Simplifies integrations</strong> for repetitive tasks
+                        </div>
+                        <div class="feature-description" style="text-align: left; margin-bottom: 16px;">
+                            <strong>500+ app support,</strong> prioritizes mass adoption
+                        </div>
+                        <div class="feature-description" style="text-align: left;">
+                            <strong>Use Case:</strong> Meeting notes automation
+                        </div>
+                    </div>
+                </div>
+                <div class="quote-box" style="margin-top: 32px;">
+                    N8N's pricing saved 20% vs. Zapier for complex workflows (n8n Blog, 2025). No-code platforms are entry points to agentic design.
+                </div>
+            </div>
+
+            <!-- Slide 16: Agents.md -->
+            <div class="slide">
+                <h1>Agents.md: <span class="gradient-text">Standardizing Workflows</span></h1>
+                <div class="definition-box">
+                    <h3>Definition</h3>
+                    <p>Markdown-based standard for project-wide rules (e.g., test commands, file structure).</p>
+                    
+                    <div class="code-block" style="margin-top: 24px; text-align: left;">
+                        # Agents.md<br><br>
+                        ## Project Rules<br>
+                        - Always run tests before committing<br>
+                        - Use TypeScript for all new files<br>
+                        - Follow the established folder structure<br>
+                        - Document all API endpoints<br><br>
+                        ## Agent Instructions<br>
+                        - Use RAG for company knowledge<br>
+                        - Validate all outputs before execution<br>
+                        - Request approval for destructive actions
+                    </div>
+                    
+                    <p style="margin-top: 24px;"><strong>Purpose:</strong> Ensures interoperability and consistency.</p>
+                    <p><strong>Use Case:</strong> Governs Claude Code workflows, standardizing repository interactions.</p>
+                    <p><strong>Benefit:</strong> Acts as a "README for agents," reducing setup errors and enabling scalable systems.</p>
+                </div>
+            </div>
+
+            <!-- Slide 17: BMAD Method -->
+            <div class="slide">
+                <h1>BMAD Method: <span class="blue-gradient">Structured Development</span></h1>
+                <div class="definition-box">
+                    <h3>Definition</h3>
+                    <p>Business, Management, Architecture, Development (BMAD) uses Analyst, PM, Architect agents to create PRD.md, Architecture.md, .story.md.</p>
+                    
+                    <div class="flow-diagram" style="margin: 32px auto;">
+                        <div class="flow-step">Analyst</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">PM</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Architect</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">Developer</div>
+                    </div>
+                    
+                    <h3 style="margin-top: 32px;">Process</h3>
+                    <p>Scrum Master shards documents into granular tasks with "just-in-time context."</p>
+                    
+                    <div class="features-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 24px;">
+                        <div class="feature-card">
+                            <div class="feature-title">PRD.md</div>
+                            <div class="feature-description">Product requirements document</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">Architecture.md</div>
+                            <div class="feature-description">System architecture design</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-title">.story.md</div>
+                            <div class="feature-description">User story documentation</div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 24px;"><strong>Use Case:</strong> Automated SaaS tool documentation, ensuring traceability (Perplexity, 2025).</p>
+                    <p><strong>Benefit:</strong> Translates strategic intent into executable blueprints. Structured approach to complex projects.</p>
+                </div>
+            </div>
+
+            <!-- Slide 18: Call to Action -->
+            <div class="slide">
+                <h1>Become an <span class="gradient-text">Agentic Orchestrator</span></h1>
+                <div class="definition-box">
+                    <h3 style="text-align: center;">Next Steps</h3>
+                    <ul class="bullet-list" style="list-style: none; padding-left: 0; text-align: center;">
+                        <li>Audit repetitive tasks in your workflow</li>
+                        <li>Pilot an agent (e.g., N8N workflow, meeting note automation)</li>
+                        <li>Measure impact and iterate</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 32px; text-align: center;">Learning Path</h3>
+                    <div class="flow-diagram" style="margin: 32px auto;">
+                        <div class="flow-step">No-Code</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">CrewAI</div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">LangGraph</div>
+                    </div>
+                    <p style="text-align: center; margin-top: 16px;">Start with no-code (N8N, Zapier), progress to CrewAI, then LangGraph for production.</p>
+                    
+                    <h3 style="margin-top: 32px; text-align: center;">Skill Focus</h3>
+                    <div class="chip-container" style="margin-top: 24px;">
+                        <div class="chip primary">Context Engineering</div>
+                        <div class="chip primary">Orchestration</div>
+                        <div class="chip primary">System Thinking</div>
+                    </div>
+                    
+                    <div class="quote-box" style="margin-top: 32px; text-align: center;">
+                        "Those who oversee AI agents today will invent the future." — McKinsey, 2025
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 19: Q&A and Resources -->
+            <div class="slide">
+                <h1>Q&A and <span class="blue-gradient">Resources</span></h1>
+                <h2>Invite questions on agent building, prompting, or MAS design</h2>
+                
+                <div class="resources-list">
+                    <a href="https://anthropic.com" target="_blank">Anthropic: Claude Agent SDK (anthropic.com)</a>
+                    <a href="https://openai.com" target="_blank">OpenAI: ChatGPT Agent Guide (openai.com)</a>
+                    <a href="https://blog.n8n.io" target="_blank">N8N Blog: AI Agent Frameworks (blog.n8n.io)</a>
+                    <a href="https://mckinsey.com" target="_blank">McKinsey: AI in the Workplace 2025 (mckinsey.com)</a>
+                    <a href="https://console.anthropic.com" target="_blank">Console.Anthropic.com: Prompt Engineering Hub</a>
+                </div>
+                
+                <div class="chip-container" style="margin-top: 32px;">
+                    <div class="chip">Community: r/AI_Agents</div>
+                    <div class="chip">Hands-on Experimentation</div>
+                    <div class="chip">Start Simple</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation-dots">
+            <div class="dot active" onclick="goToSlide(0)"></div>
+            <div class="dot" onclick="goToSlide(1)"></div>
+            <div class="dot" onclick="goToSlide(2)"></div>
+            <div class="dot" onclick="goToSlide(3)"></div>
+            <div class="dot" onclick="goToSlide(4)"></div>
+            <div class="dot" onclick="goToSlide(5)"></div>
+            <div class="dot" onclick="goToSlide(6)"></div>
+            <div class="dot" onclick="goToSlide(7)"></div>
+            <div class="dot" onclick="goToSlide(8)"></div>
+            <div class="dot" onclick="goToSlide(9)"></div>
+            <div class="dot" onclick="goToSlide(10)"></div>
+            <div class="dot" onclick="goToSlide(11)"></div>
+            <div class="dot" onclick="goToSlide(12)"></div>
+            <div class="dot" onclick="goToSlide(13)"></div>
+            <div class="dot" onclick="goToSlide(14)"></div>
+            <div class="dot" onclick="goToSlide(15)"></div>
+            <div class="dot" onclick="goToSlide(16)"></div>
+            <div class="dot" onclick="goToSlide(17)"></div>
+            <div class="dot" onclick="goToSlide(18)"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('visible');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('visible');
+            dots[currentSlide].classList.add('active');
+            
+            // Reset animations for the new slide
+            const elements = slides[currentSlide].querySelectorAll('.metric, .chip, .feature-card, .bullet-list li');
+            elements.forEach(el => {
+                el.style.animation = 'none';
+                setTimeout(() => {
+                    el.style.animation = '';
+                }, 10);
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (currentSlide < slides.length - 1) {
+                    goToSlide(currentSlide + 1);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentSlide > 0) {
+                    goToSlide(currentSlide - 1);
+                }
+            }
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50 && currentSlide < slides.length - 1) {
+                goToSlide(currentSlide + 1);
+            }
+            if (touchEndX > touchStartX + 50 && currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            }
+        }
+    </script>
+</body>
+</html>
+
