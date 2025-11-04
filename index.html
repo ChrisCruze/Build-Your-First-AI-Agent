@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Agentic Revolution — Knowledge Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --surface: #ffffff;
+      --surface-alt: #f3f4f6;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.1);
+      --border: #e2e8f0;
+      --shadow: 0 20px 45px -24px rgba(15, 23, 42, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-primary);
+      background-color: var(--bg);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 0;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      min-height: 100vh;
+      max-width: 1440px;
+      margin: 0 auto;
+      background-color: var(--bg);
+    }
+
+    nav {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .brand h1 {
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    .nav-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .nav-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: var(--text-secondary);
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-item:hover,
+    .nav-item:focus-visible {
+      background: var(--accent-soft);
+      color: var(--accent);
+      box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.08);
+      outline: none;
+    }
+
+    .nav-index {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .main-content {
+      padding: 48px 64px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 24px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(56, 189, 248, 0.12));
+      border-radius: 32px;
+      padding: 48px 56px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .hero h2 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1.05rem;
+    }
+
+    .hero .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .chip {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.12);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-header h3 {
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-header p {
+      max-width: 520px;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .accordion-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px -28px rgba(15, 23, 42, 0.45);
+      overflow: hidden;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 24px;
+      background: transparent;
+      border: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+
+    .accordion-trigger span {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .accordion-trigger small {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .accordion-trigger .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      color: var(--accent);
+      transition: transform 0.2s ease;
+    }
+
+    .accordion-item.active .accordion-trigger .icon {
+      transform: rotate(45deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background: var(--surface-alt);
+      border-top: 1px solid var(--border);
+    }
+
+    .accordion-inner {
+      padding: 24px 28px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .accordion-inner p {
+      color: var(--text-secondary);
+    }
+
+    .accordion-inner ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-secondary);
+    }
+
+    .accordion-inner li {
+      margin-bottom: 8px;
+    }
+
+    .learn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1080px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .main-content {
+        padding: 32px 24px 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <nav>
+      <div class="brand">
+        <h1>Agentic Revolution</h1>
+        <span>Explore extended notes for each presentation slide.</span>
+      </div>
+      <div class="nav-group">
+        <span class="nav-label">Slides</span>
+        <a class="nav-item" href="sections/agentic-revolution-intro.html"><span class="nav-index">01</span> The Agentic Revolution</a>
+        <a class="nav-item" href="sections/why-it-matters.html"><span class="nav-index">02</span> Why It Matters</a>
+        <a class="nav-item" href="sections/what-is-an-ai-agent.html"><span class="nav-index">03</span> What Is an AI Agent?</a>
+        <a class="nav-item" href="sections/real-world-use-cases.html"><span class="nav-index">04</span> Real-World Use Cases</a>
+        <a class="nav-item" href="sections/retrieval-augmented-generation.html"><span class="nav-index">05</span> Retrieval-Augmented Generation</a>
+        <a class="nav-item" href="sections/model-context-protocol.html"><span class="nav-index">06</span> Model Context Protocol</a>
+        <a class="nav-item" href="sections/claude-with-skills.html"><span class="nav-index">07</span> Claude with Skills</a>
+        <a class="nav-item" href="sections/browser-based-agents.html"><span class="nav-index">08</span> Browser-Based Agents</a>
+        <a class="nav-item" href="sections/tools-and-capabilities.html"><span class="nav-index">09</span> Tools & Capabilities</a>
+        <a class="nav-item" href="sections/mcp-integration.html"><span class="nav-index">10</span> MCP Integrations</a>
+        <a class="nav-item" href="sections/console-anthropic.html"><span class="nav-index">11</span> Console.Anthropic</a>
+        <a class="nav-item" href="sections/prompting-best-practices.html"><span class="nav-index">12</span> Prompting Best Practices</a>
+        <a class="nav-item" href="sections/multi-agent-systems.html"><span class="nav-index">13</span> Multi-Agent Systems</a>
+        <a class="nav-item" href="sections/orchestrator-role.html"><span class="nav-index">14</span> Orchestrator Role</a>
+        <a class="nav-item" href="sections/no-code-powerhouses.html"><span class="nav-index">15</span> No-Code Powerhouses</a>
+        <a class="nav-item" href="sections/agents-md.html"><span class="nav-index">16</span> Agents.md Standard</a>
+        <a class="nav-item" href="sections/bmad-method.html"><span class="nav-index">17</span> BMAD Method</a>
+        <a class="nav-item" href="sections/become-agentic-orchestrator.html"><span class="nav-index">18</span> Become an Orchestrator</a>
+        <a class="nav-item" href="sections/qa-and-resources.html"><span class="nav-index">19</span> Q&A & Resources</a>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <section class="hero">
+        <h2>The Agentic Revolution Knowledge Hub</h2>
+        <p>
+          Extend every slide from the presentation into actionable field notes. Use the navigation to dive deeper, or explore the
+          progressive disclosure below to reveal context, operating guidance, and recommended next steps.
+        </p>
+        <div class="chip-row">
+          <div class="chip">Context Engineering</div>
+          <div class="chip">Agent Orchestration</div>
+          <div class="chip">Systems Thinking</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h3>Orientation</h3>
+          <p>Understand why the agentic shift matters and the principles that frame autonomous collaboration.</p>
+        </div>
+        <div class="accordion">
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 01</small>
+                The Agentic Revolution: Directing the Future
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Reframe AI adoption around orchestrating agent teams with clear goals, feedback loops, and human stewardship.</p>
+                <ul>
+                  <li>Position orchestration as the new leadership discipline.</li>
+                  <li>Anchor every agent to measurable outcomes and governance.</li>
+                  <li>Pair autonomy with cultural readiness for experimentation.</li>
+                </ul>
+                <a class="learn-more" href="sections/agentic-revolution-intro.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 02</small>
+                Why the Agentic Revolution Matters
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Market data shows explosive growth and a readiness gap—leaders must move quickly while others are learning.</p>
+                <ul>
+                  <li>Translate macro statistics into an internal business case.</li>
+                  <li>Establish a maturity model to gauge your organization.</li>
+                  <li>Prepare to scale wins before competitors close the gap.</li>
+                </ul>
+                <a class="learn-more" href="sections/why-it-matters.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 03</small>
+                Defining an AI Agent
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Use the PEAS framework to articulate agent scope, capabilities, and resource boundaries before deployment.</p>
+                <ul>
+                  <li>Document sensors, actuators, and memory strategies.</li>
+                  <li>List dependencies that keep the agent effective.</li>
+                  <li>Assess risk scenarios and human fallback paths.</li>
+                </ul>
+                <a class="learn-more" href="sections/what-is-an-ai-agent.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h3>Applied Impact</h3>
+          <p>See how agents create measurable value across teams and the infrastructure that keeps them reliable.</p>
+        </div>
+        <div class="accordion">
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 04</small>
+                Real-World Use Cases
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Case studies span newsletters, IT, finance, and software, showcasing breadth of automation impact.</p>
+                <ul>
+                  <li>Interview operators to surface pain points.</li>
+                  <li>Define baselines for time saved and accuracy gained.</li>
+                  <li>Create templates for replicating successful pilots.</li>
+                </ul>
+                <a class="learn-more" href="sections/real-world-use-cases.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 05</small>
+                Retrieval-Augmented Generation
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Ground agents in curated knowledge to minimize hallucinations and boost trustworthiness.</p>
+                <ul>
+                  <li>Design ingestion pipelines with quality gates.</li>
+                  <li>Calibrate retrieval depth against latency budgets.</li>
+                  <li>Track answer precision to refine embeddings.</li>
+                </ul>
+                <a class="learn-more" href="sections/retrieval-augmented-generation.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 06</small>
+                Model Context Protocol
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Standardize how agents request data and perform actions using modular, auditable skills.</p>
+                <ul>
+                  <li>Define clear schemas for inputs and outputs.</li>
+                  <li>Instrument calls for reliability and security.</li>
+                  <li>Version skills to evolve safely over time.</li>
+                </ul>
+                <a class="learn-more" href="sections/model-context-protocol.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 07</small>
+                Claude with Skills
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Bundle repeatable workflows into skills that orchestrators can chain with confidence.</p>
+                <ul>
+                  <li>Capture success criteria for each skill.</li>
+                  <li>Monitor drift through human review loops.</li>
+                  <li>Retire or refine skills that underperform.</li>
+                </ul>
+                <a class="learn-more" href="sections/claude-with-skills.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h3>Tooling & Infrastructure</h3>
+          <p>Connect browser automation, orchestration platforms, and prompt engineering environments into one ecosystem.</p>
+        </div>
+        <div class="accordion">
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 08</small>
+                Browser-Based Agents
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Enable agents to research, validate, and transact on the open web without brittle scripts.</p>
+                <ul>
+                  <li>Record supervised runs to capture required behaviors.</li>
+                  <li>Store reusable profiles for complex sites.</li>
+                  <li>Log every action to preserve auditability.</li>
+                </ul>
+                <a class="learn-more" href="sections/browser-based-agents.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 09</small>
+                Tools & Their Capabilities
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Map the landscape of LLMs, automation platforms, and evaluation layers to match agent roles.</p>
+                <ul>
+                  <li>Maintain a registry of approved tools.</li>
+                  <li>Blend deterministic and generative services responsibly.</li>
+                  <li>Plan guardrails and monitoring ahead of launch.</li>
+                </ul>
+                <a class="learn-more" href="sections/tools-and-capabilities.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 10</small>
+                MCP Integrations with LLMs
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Bridge ChatGPT and Claude to enterprise systems with scoped, secure MCP integrations.</p>
+                <ul>
+                  <li>Design authentication flows that respect least privilege.</li>
+                  <li>Set usage quotas for high-impact actions.</li>
+                  <li>Test end-to-end missions before production rollout.</li>
+                </ul>
+                <a class="learn-more" href="sections/mcp-integration.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 11</small>
+                Console.Anthropic for Prompt Engineering
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Use Anthropic’s console to iterate on prompts, datasets, and evals with traceable experiment history.</p>
+                <ul>
+                  <li>Baseline prompts with clear scoring rubrics.</li>
+                  <li>Label dataset slices to expose edge cases.</li>
+                  <li>Automate regression tests to catch drift.</li>
+                </ul>
+                <a class="learn-more" href="sections/console-anthropic.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 12</small>
+                Prompting Best Practices
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Structure instructions so agents work step-by-step and communicate outcomes clearly.</p>
+                <ul>
+                  <li>Clarify roles, objectives, and constraints in every prompt.</li>
+                  <li>Provide schemas and examples for tool usage.</li>
+                  <li>Request structured outputs for downstream automation.</li>
+                </ul>
+                <a class="learn-more" href="sections/prompting-best-practices.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h3>Multi-Agent Operations</h3>
+          <p>Coordinate teams of agents, human orchestrators, and no-code builders to ship complex outcomes.</p>
+        </div>
+        <div class="accordion">
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 13</small>
+                Multi-Agent Systems
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Design planner, executor, and reviewer roles with shared context channels and arbitration logic.</p>
+                <ul>
+                  <li>Create communication protocols before coding.</li>
+                  <li>Run rehearsals to validate collaboration loops.</li>
+                  <li>Monitor latency and contention as scale grows.</li>
+                </ul>
+                <a class="learn-more" href="sections/multi-agent-systems.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 14</small>
+                Orchestrator Role
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Humans translate strategy into agent missions, enforce guardrails, and manage escalation paths.</p>
+                <ul>
+                  <li>Run tabletop exercises for intervention scenarios.</li>
+                  <li>Track metrics across throughput, quality, and risk.</li>
+                  <li>Educate stakeholders on when to trust or override agents.</li>
+                </ul>
+                <a class="learn-more" href="sections/orchestrator-role.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 15</small>
+                N8N & Zapier No-Code Powerhouses
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>No-code platforms are the launchpad for agentic thinking across operations and citizen developers.</p>
+                <ul>
+                  <li>Audit existing flows to identify agent augmentation points.</li>
+                  <li>Document governance covering credentials and recovery.</li>
+                  <li>Translate winning prototypes into engineered services.</li>
+                </ul>
+                <a class="learn-more" href="sections/no-code-powerhouses.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 16</small>
+                Agents.md Standard
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Codify expectations in markdown manifests so people and agents operate with the same playbook.</p>
+                <ul>
+                  <li>Define repository conventions and testing policies.</li>
+                  <li>List agent instructions alongside human guidelines.</li>
+                  <li>Review manifests regularly to keep them current.</li>
+                </ul>
+                <a class="learn-more" href="sections/agents-md.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 17</small>
+                BMAD Method
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Use BMAD to align analyst, PM, architect, and developer agents through structured artifact handoffs.</p>
+                <ul>
+                  <li>Map current rituals to BMAD roles to spot gaps.</li>
+                  <li>Automate docs with human review checkpoints.</li>
+                  <li>Track cycle time from idea to deployment.</li>
+                </ul>
+                <a class="learn-more" href="sections/bmad-method.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h3>Action & Resources</h3>
+          <p>Move from experimentation to mastery with guided learning paths and curated references.</p>
+        </div>
+        <div class="accordion">
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 18</small>
+                Become an Agentic Orchestrator
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Chart a roadmap from workflow audits to multi-agent production deployments.</p>
+                <ul>
+                  <li>Run pilots and measure before/after impact.</li>
+                  <li>Document lessons to inform the next build cycle.</li>
+                  <li>Pair orchestrators with domain experts to accelerate adoption.</li>
+                </ul>
+                <a class="learn-more" href="sections/become-agentic-orchestrator.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+          <article class="accordion-item">
+            <button class="accordion-trigger" type="button">
+              <span>
+                <small>Slide 19</small>
+                Q&A and Resources
+              </span>
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <p>Leverage curated references and communities to maintain momentum long after the presentation.</p>
+                <ul>
+                  <li>Bookmark SDKs and implementation guides.</li>
+                  <li>Join community sessions for live troubleshooting.</li>
+                  <li>Share success stories internally to reinforce progress.</li>
+                </ul>
+                <a class="learn-more" href="sections/qa-and-resources.html">Read extended notes →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.accordion-item');
+
+    items.forEach((item) => {
+      const trigger = item.querySelector('.accordion-trigger');
+      const content = item.querySelector('.accordion-content');
+
+      trigger.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        items.forEach((other) => {
+          if (other !== item) {
+            other.classList.remove('active');
+            other.querySelector('.accordion-content').style.maxHeight = null;
+          }
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          item.classList.remove('active');
+          content.style.maxHeight = null;
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.accordion-item.active .accordion-content').forEach((content) => {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      });
+    });
+  </script>
+</body>
+</html>
