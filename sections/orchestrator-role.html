@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orchestrator Role in Multi-Agent Systems</title>
+  <title>Orchestrator Role &mdash; The Human in the Loop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,7 +26,7 @@
         <a class="nav-item" href="model-context-protocol.html"><span class="nav-index">06</span> Model Context Protocol</a>
         <a class="nav-item" href="claude-with-skills.html"><span class="nav-index">07</span> Claude with Skills</a>
         <a class="nav-item" href="browser-based-agents.html"><span class="nav-index">08</span> Browser-Based Agents</a>
-        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools & Capabilities</a>
+        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools &amp; Capabilities</a>
         <a class="nav-item" href="mcp-integration.html"><span class="nav-index">10</span> MCP Integrations</a>
         <a class="nav-item" href="console-anthropic.html"><span class="nav-index">11</span> Console.Anthropic</a>
         <a class="nav-item" href="prompting-best-practices.html"><span class="nav-index">12</span> Prompting Best Practices</a>
@@ -44,26 +44,90 @@
       <a class="back-link" href="../index.html">← Back to overview</a>
       <article class="content-card">
         <header>
-          <h1>Orchestrator Role in Multi-Agent Systems</h1>
-          <p>Human orchestrators set intent, oversee execution, and uphold governance standards.<a class="fact-link" href="https://www.ibm.com/think/topics/ai-agent-orchestration" target="_blank" rel="noopener noreferrer"> Source</a></p>
+          <h1>Orchestrator Role &mdash; The Human in the Loop</h1>
+          <p>Orchestrators translate strategy into missions, enforce guardrails, and know when to intervene.</p>
         </header>
 
         <div class="section-block">
-          <h3>Key Insights</h3>
+          <h3>Opening Hook</h3>
+          <blockquote>
+            &ldquo;Agents execute the strategy. Humans set it, refine it, and know when to pull the emergency brake.&rdquo;
+          </blockquote>
+        </div>
+
+        <div class="section-block">
+          <h3>What Orchestrators Actually Do</h3>
           <ul>
-            <li>Translate strategic objectives into modular missions that specialized agents can pursue safely.<a class="fact-link" href="https://www.ibm.com/think/topics/ai-agent-orchestration" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Maintain fallback paths and human checkpoints for high-stakes steps, ensuring accountability remains with people.<a class="fact-link" href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential-at-work" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Champion documentation and context manifests so teams understand system behavior and can audit decisions.<a class="fact-link" href="https://github.com/anthropics/claude-code/issues/9861" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li><strong>Mission design:</strong> Craft briefs with current state, target metrics, scope, and review cadence.</li>
+            <li><strong>Guardrail enforcement:</strong> Define policies, monitor triggers, and hold agents accountable.</li>
+            <li><strong>Escalation routing:</strong> Ensure humans re-enter the loop when stakes rise or confidence falls.</li>
+            <li><strong>Feedback loops:</strong> Deliver structured feedback that improves prompts, skills, and datasets.</li>
           </ul>
         </div>
 
         <div class="section-block">
-          <h3>Recommended Actions</h3>
-          <ul class="actions">
-            <li>Run tabletop exercises to rehearse escalation scenarios and refine intervention playbooks.<a class="fact-link" href="https://www.ibm.com/think/topics/ai-agent-orchestration" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Track composite metrics that blend throughput, quality, and risk to measure orchestration effectiveness.<a class="fact-link" href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential-at-work" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Educate stakeholders on when to trust versus override agent choices using clear documentation and audit trails.<a class="fact-link" href="https://github.com/anthropics/claude-code/issues/9861" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          <h3>Guardrails in Action</h3>
+          <div class="callout">
+            <h4>Refund Email Example</h4>
+            <p>Agent drafts a $5,000 refund email. Guardrail detects high amount → holds send → orchestrator reviews context → approves or adjusts.</p>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Escalation Blueprint</h3>
+          <pre><code>IF sentiment == "angry" → escalate immediately
+IF technical_issue AND attempts &gt; 2 → route to engineering
+IF refund_amount &gt; $100 → manager approval
+IF confidence &lt; 0.7 → send draft for review</code></pre>
+        </div>
+
+        <div class="section-block">
+          <h3>Tabletop Exercises</h3>
+          <ul>
+            <li><strong>Agent goes rogue:</strong> Practice rate-limit alerts and kill-switches.</li>
+            <li><strong>Data breach alarm:</strong> Trace access logs, rotate credentials.</li>
+            <li><strong>Customer backlash:</strong> Adjust prompts, reintroduce human review temporarily.</li>
           </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Orchestrator Dashboard</h3>
+          <div class="grid-two-column">
+            <div class="metric-card">
+              <h4>Throughput</h4>
+              <p>Tasks completed (last hour): 847<br/>Pending: 23<br/>Avg task time: 4.2 min</p>
+            </div>
+            <div class="metric-card">
+              <h4>Quality &amp; Risk</h4>
+              <p>Approval rate: 91%<br/>Guardrail triggers today: 7<br/>Cost today: $127.45</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Trust vs. Override</h3>
+          <ul>
+            <li>Trust when confidence &gt; 0.85, task is low stakes, and metrics are stable.</li>
+            <li>Override when confidence &lt; 0.6, stakes are high, or logic feels off—even if the agent is confident.</li>
+          </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Stakeholder Messaging</h3>
+          <ul>
+            <li><strong>Executives:</strong> Highlight ROI, governance, and strategic roadmap.</li>
+            <li><strong>Operators:</strong> Emphasize control, override ability, and collaboration.</li>
+            <li><strong>Customers:</strong> Promote faster resolutions with human oversight on complex issues.</li>
+          </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Real Orchestrator Profile</h3>
+          <div class="callout">
+            <h4>Sarah, Support Orchestrator</h4>
+            <p>Former support rep managing eight agents handling 500+ tickets/day. Daily routine: review overnight metrics, approve escalations, sample interactions, coordinate prompt improvements.</p>
+          </div>
+          <span class="stat-callout">Dedicated orchestrators deliver 3.2x faster time-to-production for new agents and prevent costly errors in 8–12% of high-stakes actions.</span>
         </div>
       </article>
     </main>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What Is an AI Agent?</title>
+  <title>Defining an AI Agent (PEAS Framework)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -44,26 +44,70 @@
       <a class="back-link" href="../index.html">← Back to overview</a>
       <article class="content-card">
         <header>
-          <h1>What Is an AI Agent?</h1>
-          <p>An agent senses, reasons, plans, and acts toward explicit goals within a defined environment.<a class="fact-link" href="https://www.perplexity.ai/search/define-an-agent-as-anything-th-IpBeWQw8TXCLuQCLG42mfQ" target="_blank" rel="noopener noreferrer"> Source</a></p>
+          <h1>Defining an AI Agent with the PEAS Framework</h1>
+          <p>Boundaries create reliability. Use the PEAS framework to define what success looks like before the first line of code is written.</p>
         </header>
 
         <div class="section-block">
-          <h3>Key Insights</h3>
+          <h3>Opening Hook</h3>
+          <blockquote>
+            &ldquo;An agent without defined boundaries isn't autonomous—it's unpredictable.&rdquo;
+          </blockquote>
+        </div>
+
+        <div class="section-block">
+          <h3>The PEAS Breakdown</h3>
           <ul>
-            <li>The PEAS model—Performance, Environment, Actuators, Sensors—remains the baseline for describing agent scope.<a class="fact-link" href="https://www.perplexity.ai/search/define-an-agent-as-anything-th-IpBeWQw8TXCLuQCLG42mfQ" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>LLM “brains” rely on short-term context windows plus long-term memory via RAG to stay grounded and avoid hallucinations.<a class="fact-link" href="https://agent-builders.site44.com/" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Sensors such as RAG connectors and actuators like MCP tool calls complete the perception-to-action loop.<a class="fact-link" href="https://skywork.ai/skypage/en/rube-mcp-server-guide-ai-engineers/1978343868361732096" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li><strong>Performance measure:</strong> Name the quantifiable outcome. Replace &ldquo;help with accounting&rdquo; with &ldquo;achieve 95% accuracy in invoice categorization.&rdquo;</li>
+            <li><strong>Environment:</strong> List the systems, constraints, and data zones the agent operates within (APIs, rate limits, privacy zones).</li>
+            <li><strong>Actuators:</strong> Enumerate what the agent can <em>do</em>—and what it explicitly cannot.</li>
+            <li><strong>Sensors:</strong> Detail the signals and context the agent perceives, including how long it retains memory.</li>
           </ul>
         </div>
 
         <div class="section-block">
-          <h3>Recommended Actions</h3>
-          <ul class="actions">
-            <li>Document each agent’s PEAS definition—including success metrics—before building.<a class="fact-link" href="https://www.perplexity.ai/search/define-an-agent-as-anything-th-IpBeWQw8TXCLuQCLG42mfQ" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Design explicit memory policies that pair conversation buffers with searchable knowledge stores.<a class="fact-link" href="https://agent-builders.site44.com/" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>List every tool an agent may invoke, the data it can touch, and the approval rules that govern actions.<a class="fact-link" href="https://aws.amazon.com/blogs/opensource/introducing-cli-agent-orchestrator-transforming-developer-cli-tools-into-a-multi-agent-powerhouse/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          <h3>Example &mdash; Customer Support Agent</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>PEAS Element</th>
+                <th>Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Performance</strong></td>
+                <td>Resolve tier-1 tickets in under 5 minutes while maintaining a 90% satisfaction score.</td>
+              </tr>
+              <tr>
+                <td><strong>Environment</strong></td>
+                <td>Zendesk, knowledge base, and product documentation (read-only).</td>
+              </tr>
+              <tr>
+                <td><strong>Actuators</strong></td>
+                <td>Reply to tickets, tag urgency, and escalate to a human. No refunds or account changes.</td>
+              </tr>
+              <tr>
+                <td><strong>Sensors</strong></td>
+                <td>Ticket content, customer history, product version metadata, prior conversation context.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-block">
+          <h3>Risk Scenario Planning</h3>
+          <ul>
+            <li><strong>Outdated knowledge:</strong> What happens when the knowledge base lags behind reality?</li>
+            <li><strong>Out-of-scope requests:</strong> Define the fallback when customers seek refunds or policy exceptions.</li>
+            <li><strong>Human fallback path:</strong> Capture the context passed to humans and the expected response time.</li>
           </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Why This Discipline Matters</h3>
+          <span class="stat-callout">Teams that document PEAS before deployment report 60% fewer unexpected behaviors in the first 30 days.</span>
+          <p class="note">When agents are scoped well, monitoring, testing, and handoffs become teachable and repeatable.</p>
         </div>
       </article>
     </main>

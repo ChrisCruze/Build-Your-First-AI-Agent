@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tools and Their Capabilities</title>
+  <title>Tools &amp; Capabilities &mdash; The Agentic Ecosystem</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,7 +26,7 @@
         <a class="nav-item" href="model-context-protocol.html"><span class="nav-index">06</span> Model Context Protocol</a>
         <a class="nav-item" href="claude-with-skills.html"><span class="nav-index">07</span> Claude with Skills</a>
         <a class="nav-item" href="browser-based-agents.html"><span class="nav-index">08</span> Browser-Based Agents</a>
-        <a class="nav-item active" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools & Capabilities</a>
+        <a class="nav-item active" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools &amp; Capabilities</a>
         <a class="nav-item" href="mcp-integration.html"><span class="nav-index">10</span> MCP Integrations</a>
         <a class="nav-item" href="console-anthropic.html"><span class="nav-index">11</span> Console.Anthropic</a>
         <a class="nav-item" href="prompting-best-practices.html"><span class="nav-index">12</span> Prompting Best Practices</a>
@@ -44,26 +44,176 @@
       <a class="back-link" href="../index.html">← Back to overview</a>
       <article class="content-card">
         <header>
-          <h1>Tools and Their Capabilities</h1>
-          <p>Pair the right toolchain with agent roles to balance creativity and control.<a class="fact-link" href="https://beam.ai/agentic-insights/the-top-5-ai-agent-platforms-in-2025-and-how-to-pick-the-right-one" target="_blank" rel="noopener noreferrer"> Source</a></p>
+          <h1>Tools &amp; Capabilities &mdash; The Agentic Ecosystem</h1>
+          <p>Match the right brains, hands, and guardrails to each mission instead of defaulting to one model for everything.</p>
         </header>
 
         <div class="section-block">
-          <h3>Key Insights</h3>
+          <h3>Opening Hook</h3>
+          <blockquote>
+            &ldquo;You wouldn't use a hammer to tighten a screw. Why use one LLM for every agent task?&rdquo;
+          </blockquote>
+        </div>
+
+        <div class="section-block">
+          <h3>Category 1 &mdash; Large Language Models</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Strength</th>
+                <th>Best For</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GPT-4</td>
+                <td>General reasoning, coding</td>
+                <td>Complex analysis, technical tasks</td>
+                <td>$$$</td>
+              </tr>
+              <tr>
+                <td>Claude Sonnet</td>
+                <td>Instruction following, safety</td>
+                <td>Customer-facing, nuanced tasks</td>
+                <td>$$</td>
+              </tr>
+              <tr>
+                <td>Gemini</td>
+                <td>Multimodal, long context</td>
+                <td>Document + video analysis</td>
+                <td>$$</td>
+              </tr>
+              <tr>
+                <td>Llama 3</td>
+                <td>Open-source, customizable</td>
+                <td>Internal tools, privacy-first workloads</td>
+                <td>$ (hosting)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-block">
+          <h3>Category 2 &mdash; Automation Platforms</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Tool</th>
+                <th>Capability</th>
+                <th>Complexity</th>
+                <th>Agent-Ready?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Zapier</td>
+                <td>6,000+ app integrations</td>
+                <td>Low</td>
+                <td>✅ AI Actions</td>
+              </tr>
+              <tr>
+                <td>n8n</td>
+                <td>Self-hosted, visual workflows</td>
+                <td>Medium</td>
+                <td>✅ AI nodes</td>
+              </tr>
+              <tr>
+                <td>Make</td>
+                <td>Complex logic and routing</td>
+                <td>Medium</td>
+                <td>✅ AI modules</td>
+              </tr>
+              <tr>
+                <td>Temporal</td>
+                <td>Durable, large-scale workflows</td>
+                <td>High</td>
+                <td>✅ via LangChain</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-block">
+          <h3>Category 3 &mdash; Evaluation &amp; Monitoring</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Tool</th>
+                <th>Purpose</th>
+                <th>Critical For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>LangSmith</td>
+                <td>Trace agent decisions, debug</td>
+                <td>Production agents</td>
+              </tr>
+              <tr>
+                <td>Promptfoo</td>
+                <td>Automated prompt testing</td>
+                <td>Regression prevention</td>
+              </tr>
+              <tr>
+                <td>Braintrust</td>
+                <td>Dataset management</td>
+                <td>Continuous improvement</td>
+              </tr>
+              <tr>
+                <td>Helicone</td>
+                <td>LLM observability &amp; cost tracking</td>
+                <td>Multi-agent systems</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-block">
+          <h3>The Blend Strategy</h3>
+          <p>Use generative AI to decide and deterministic code to execute. Reserve expensive LLM calls for high-ambiguity moments.</p>
+          <pre><code>1. Extract invoice data → Generative (OCR + LLM)
+2. Validate formats → Deterministic (regex checks)
+3. Check duplicates → Deterministic (database query)
+4. Flag anomalies → Generative (spot unusual patterns)
+5. Route approvals → Deterministic (business rules)</code></pre>
+          <p class="note">This pattern delivered 70% cost savings for teams that initially used GPT-4 end-to-end.</p>
+        </div>
+
+        <div class="section-block">
+          <h3>Tool Registry Template</h3>
+          <pre><code>Tool: OpenAI GPT-4 API
+Version: gpt-4-0125-preview
+Approved For:
+  - Customer support (tier 1-2)
+  - Content drafting (not final copy)
+Restricted From:
+  - Legal document generation
+  - Medical advice
+Access: API key rotated quarterly
+Cost: $0.03 / 1K input tokens
+Monthly Budget: $5,000
+Fallback: GPT-3.5-turbo
+Last Review: 2025-01-15</code></pre>
+        </div>
+
+        <div class="section-block">
+          <h3>Guardrails &amp; Monitoring</h3>
           <ul>
-            <li>Assess orchestration frameworks, automation platforms, and LLM providers side-by-side to cover the full stack.<a class="fact-link" href="https://www.datacamp.com/blog/best-ai-agents" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Blend deterministic APIs and databases with generative reasoning so agents can both fetch facts and synthesize insights.<a class="fact-link" href="https://beam.ai/agentic-insights/the-top-5-ai-agent-platforms-in-2025-and-how-to-pick-the-right-one" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Guardrails, evaluation harnesses, and monitoring dashboards keep complex toolchains governable at scale.<a class="fact-link" href="https://blog.n8n.io/ai-agent-orchestration-frameworks/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Enforce rate limits and per-agent budgets to prevent runaway costs.</li>
+            <li>Set timeout policies and output validation (schemas, profanity filters, PII checks).</li>
+            <li>Create escalation triggers for uncertain responses and a global kill switch.</li>
           </ul>
         </div>
 
         <div class="section-block">
-          <h3>Recommended Actions</h3>
-          <ul class="actions">
-            <li>Maintain an approved tool registry that captures costs, latency expectations, and canonical use cases.<a class="fact-link" href="https://www.datacamp.com/blog/best-ai-agents" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Document escalation paths when agents encounter unsupported tasks so humans can intervene quickly.<a class="fact-link" href="https://blog.n8n.io/ai-agent-orchestration-frameworks/" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Revisit your capability map quarterly as vendors ship new skills, connectors, or compliance updates.<a class="fact-link" href="https://beam.ai/agentic-insights/the-top-5-ai-agent-platforms-in-2025-and-how-to-pick-the-right-one" target="_blank" rel="noopener noreferrer"> Source</a></li>
-          </ul>
+          <h3>Anti-Pattern to Avoid</h3>
+          <div class="callout">
+            <h4>"LLM All the Things"</h4>
+            <p>One company ran every pipeline step through GPT-4, spending $42K per month. Replacing 80% with deterministic services dropped costs to $8.4K and tripled throughput.</p>
+          </div>
+          <span class="stat-callout">Formal tool governance reduces surprise bills by 91%, and 80% of agent value typically comes from 20% of the tools you approve.</span>
         </div>
       </article>
     </main>

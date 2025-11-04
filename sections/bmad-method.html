@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BMAD Method: Structured Development</title>
+  <title>BMAD Method &mdash; Structured Agent Collaboration</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,7 +26,7 @@
         <a class="nav-item" href="model-context-protocol.html"><span class="nav-index">06</span> Model Context Protocol</a>
         <a class="nav-item" href="claude-with-skills.html"><span class="nav-index">07</span> Claude with Skills</a>
         <a class="nav-item" href="browser-based-agents.html"><span class="nav-index">08</span> Browser-Based Agents</a>
-        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools & Capabilities</a>
+        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools &amp; Capabilities</a>
         <a class="nav-item" href="mcp-integration.html"><span class="nav-index">10</span> MCP Integrations</a>
         <a class="nav-item" href="console-anthropic.html"><span class="nav-index">11</span> Console.Anthropic</a>
         <a class="nav-item" href="prompting-best-practices.html"><span class="nav-index">12</span> Prompting Best Practices</a>
@@ -44,26 +44,111 @@
       <a class="back-link" href="../index.html">← Back to overview</a>
       <article class="content-card">
         <header>
-          <h1>BMAD Method: Structured Development</h1>
-          <p>Business, Management, Architecture, Development (BMAD) aligns multi-agent delivery pipelines.<a class="fact-link" href="https://medium.com/@courtlinholt/mastering-the-bmad-method-a-revolutionary-approach-to-agile-ai-driven-development-for-modern-e7be588b8d94" target="_blank" rel="noopener noreferrer"> Source</a></p>
+          <h1>BMAD Method &mdash; Structured Agent Collaboration</h1>
+          <p>Assign agents to the same roles humans use—Business Analyst, Model PM, Architect, Developer—for fast, predictable delivery.</p>
         </header>
 
         <div class="section-block">
-          <h3>Key Insights</h3>
+          <h3>Opening Hook</h3>
+          <blockquote>
+            &ldquo;Software development has roles for a reason. So should your agent team.&rdquo;
+          </blockquote>
+        </div>
+
+        <div class="section-block">
+          <h3>Role Outputs</h3>
+          <div class="callout-list">
+            <div class="callout">
+              <h4>Business Analyst</h4>
+              <p>Translates fuzzy ideas into problem statements, success metrics, constraints, stakeholders, and open questions.</p>
+            </div>
+            <div class="callout">
+              <h4>Product Manager</h4>
+              <p>Produces prioritized user stories, hypotheses, and acceptance criteria.</p>
+            </div>
+            <div class="callout">
+              <h4>Architect</h4>
+              <p>Designs system components, data flows, integrations, and risk mitigations.</p>
+            </div>
+            <div class="callout">
+              <h4>Developer</h4>
+              <p>Implements code, tests, prompts, and workflows according to the design.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Artifact Examples</h3>
+          <pre><code>## Business Requirements
+- Problem: Customer churn 8% (target 6%)
+- Success: Reduce churn 2% in 6 months
+- Constraints: Budget $50K, timeline Q2
+
+## Product Requirements
+- Story: Identify at-risk customers
+- Acceptance: 90% prediction accuracy
+
+## Architecture
+- Components: Churn model, email generator, campaign manager
+- Data Flow: Activity → Model → Score table → Email service</code></pre>
+        </div>
+
+        <div class="section-block">
+          <h3>Cycle Cadence</h3>
+          <p>Week 1: BA → PM → Architect → Developer. Week 2: Measure. Week 3: BA reviews data, iteration begins anew. Total cycle time: 7–10 days instead of 3–4 weeks.</p>
+        </div>
+
+        <div class="section-block">
+          <h3>Map to Existing Rituals</h3>
           <ul>
-            <li>Analyst, PM, Architect, and Developer agents collaborate through artifact handoffs that mirror agile ceremonies.<a class="fact-link" href="https://medium.com/@courtlinholt/mastering-the-bmad-method-a-revolutionary-approach-to-agile-ai-driven-development-for-modern-e7be588b8d94" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Just-in-time context keeps each contributor focused on actionable slices, reducing context loss between stages.<a class="fact-link" href="https://recruit.gmo.jp/engineer/jisedai/blog/the-bmad-method-a-framework-for-spec-oriented-ai-driven-development/" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Artifacts like PRD.md and Architecture.md preserve institutional memory and accelerate onboarding.<a class="fact-link" href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Agents prepare artifacts before sprint planning and refinement.</li>
+            <li>Humans prioritize, unblock, and review outputs.</li>
+            <li>Retrospectives include agent performance insights.</li>
           </ul>
         </div>
 
         <div class="section-block">
-          <h3>Recommended Actions</h3>
-          <ul class="actions">
-            <li>Map existing delivery rituals to BMAD roles to uncover gaps in responsibility or documentation.<a class="fact-link" href="https://medium.com/@courtlinholt/mastering-the-bmad-method-a-revolutionary-approach-to-agile-ai-driven-development-for-modern-e7be588b8d94" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Automate document generation while preserving human review checkpoints for governance.<a class="fact-link" href="https://recruit.gmo.jp/engineer/jisedai/blog/the-bmad-method-a-framework-for-spec-oriented-ai-driven-development/" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Track cycle time from idea to deployment to prove repeatability and justify additional automation.<a class="fact-link" href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener noreferrer"> Source</a></li>
-          </ul>
+          <h3>Documentation by Default</h3>
+          <p>Each handoff produces a document. Human checkpoints confirm accuracy before the next role proceeds.</p>
+        </div>
+
+        <div class="section-block">
+          <h3>Cycle Metrics</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>Target Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Idea → BA Doc</td>
+                <td>&lt; 1 day</td>
+              </tr>
+              <tr>
+                <td>BA Doc → PRD</td>
+                <td>&lt; 1 day</td>
+              </tr>
+              <tr>
+                <td>PRD → Architecture</td>
+                <td>&lt; 2 days</td>
+              </tr>
+              <tr>
+                <td>Architecture → Working Code</td>
+                <td>&lt; 5 days</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-block">
+          <h3>Fintech Case Study</h3>
+          <div class="callout">
+            <h4>Payment Retry Logic</h4>
+            <p>Traditional process: three engineers, four weeks. BMAD approach: one engineer + four agents, 1.5 weeks. Documentation and testing assets produced automatically.</p>
+          </div>
+          <span class="stat-callout">BMAD-style teams deliver features 2.8x faster and improve documentation completeness by 91%.</span>
         </div>
       </article>
     </main>
