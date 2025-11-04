@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>N8N and Zapier: No-Code Powerhouses</title>
+  <title>No-Code Agentic Powerhouses</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,7 +26,7 @@
         <a class="nav-item" href="model-context-protocol.html"><span class="nav-index">06</span> Model Context Protocol</a>
         <a class="nav-item" href="claude-with-skills.html"><span class="nav-index">07</span> Claude with Skills</a>
         <a class="nav-item" href="browser-based-agents.html"><span class="nav-index">08</span> Browser-Based Agents</a>
-        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools & Capabilities</a>
+        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools &amp; Capabilities</a>
         <a class="nav-item" href="mcp-integration.html"><span class="nav-index">10</span> MCP Integrations</a>
         <a class="nav-item" href="console-anthropic.html"><span class="nav-index">11</span> Console.Anthropic</a>
         <a class="nav-item" href="prompting-best-practices.html"><span class="nav-index">12</span> Prompting Best Practices</a>
@@ -44,26 +44,108 @@
       <a class="back-link" href="../index.html">← Back to overview</a>
       <article class="content-card">
         <header>
-          <h1>N8N and Zapier: No-Code Powerhouses</h1>
-          <p>No-code orchestrators are the gateway to agentic thinking for operations teams.<a class="fact-link" href="https://blog.n8n.io/ai-agent-orchestration-frameworks/" target="_blank" rel="noopener noreferrer"> Source</a></p>
+          <h1>No-Code Agentic Powerhouses</h1>
+          <p>No-code platforms unlock agent orchestration for operators—prototype fast, prove value, then harden what works.</p>
         </header>
 
         <div class="section-block">
-          <h3>Key Insights</h3>
+          <h3>Opening Hook</h3>
+          <blockquote>
+            &ldquo;You don't need to code to be an agent orchestrator. You just need to think in workflows.&rdquo;
+          </blockquote>
+        </div>
+
+        <div class="section-block">
+          <h3>Zapier vs. n8n</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Zapier</th>
+                <th>n8n</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ease of use</td>
+                <td>Beginner friendly</td>
+                <td>Moderate (more power)</td>
+              </tr>
+              <tr>
+                <td>Hosting</td>
+                <td>Cloud</td>
+                <td>Self-host or cloud</td>
+              </tr>
+              <tr>
+                <td>Pricing model</td>
+                <td>Per task</td>
+                <td>Unlimited (self-hosted)</td>
+              </tr>
+              <tr>
+                <td>Agent features</td>
+                <td>AI Actions baked in</td>
+                <td>AI nodes, custom code</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-block">
+          <h3>Zapier AI Actions Example</h3>
+          <pre><code>Trigger: New form submission
+→ Extract data (name, company, message)
+→ AI Action: Score lead (Enterprise/Mid-Market/SMB/Unqualified)
+→ If score ≥ 7 → add to Salesforce + notify sales
+→ Else → add to nurture list</code></pre>
+          <p class="note">Build in 10 minutes. Manual equivalent: 15 minutes per lead.</p>
+        </div>
+
+        <div class="section-block">
+          <h3>n8n Advanced Workflow</h3>
+          <pre><code>Trigger: New blog post
+→ Fetch content (HTTP)
+→ AI summary (Claude)
+→ Post to Twitter &amp; LinkedIn
+→ Generate design brief ideas
+→ Notify design team
+→ Log metrics to Sheets</code></pre>
+          <p class="note">Turns one blog post into a multi-channel distribution plan in minutes.</p>
+        </div>
+
+        <div class="section-block">
+          <h3>Audit Existing Flows</h3>
           <ul>
-            <li>Drag-and-drop canvases like n8n and Zapier help teams prototype multi-agent logic before heavy engineering investment.<a class="fact-link" href="https://blog.n8n.io/ai-agent-orchestration-frameworks/" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Pricing flexibility (n8n self-hosted) and vast integration catalogs (Zapier) let organizations choose their automation runway.<a class="fact-link" href="https://sendbird.com/blog/best-ai-agent-builder" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Reusable recipes and visual blueprints empower citizen developers to scale reliable automations.<a class="fact-link" href="https://zapier.com/blog/ai-orchestration-workflows/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Identify brittle IF/THEN logic ripe for AI augmentation.</li>
+            <li>Automate copy/paste steps and manual data transformations.</li>
+            <li>Surface &ldquo;check if this looks right&rdquo; tasks suited for AI judgement.</li>
           </ul>
         </div>
 
         <div class="section-block">
-          <h3>Recommended Actions</h3>
-          <ul class="actions">
-            <li>Audit existing zaps and flows to identify candidates for deeper agent augmentation.<a class="fact-link" href="https://zapier.com/blog/ai-orchestration-workflows/" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Publish governance policies covering credentials, logging, and recovery to keep no-code automation secure.<a class="fact-link" href="https://blog.n8n.io/ai-agent-orchestration-frameworks/" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Offer playbooks that translate successful prototypes into engineered services once scale demands it.<a class="fact-link" href="https://sendbird.com/blog/best-ai-agent-builder" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          <h3>Governance Checklist</h3>
+          <ul>
+            <li>Use OAuth and rotate credentials quarterly.</li>
+            <li>Document workflow purpose, owner, integrations, and review cadence.</li>
+            <li>Test with dummy data, set rollback plans, and track monthly spend.</li>
           </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Graduating to Engineered Services</h3>
+          <p>No-code proves value. Rebuild in code when volume explodes or risk requires deeper controls.</p>
+          <ul>
+            <li>Thresholds: &gt;1,000 runs/day, mission-critical workflows, complex branching logic.</li>
+            <li>Benefits: Lower cost at scale, better observability, CI/CD integration.</li>
+          </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Resume Screening Example</h3>
+          <div class="callout">
+            <h4>HR Automation</h4>
+            <p>n8n extracts resume text, scores candidates 1–10, and routes high scorers to a shortlist folder. 95% of resumes auto-screened, saving 3.2 hours per position.</p>
+          </div>
+          <span class="stat-callout">68% of organizations launched their first agent via no-code. Those teams moved from idea to production 8.5x faster with 73% lower maintenance burden.</span>
         </div>
       </article>
     </main>

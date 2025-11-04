@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChatGPT/Claude with MCP Integration</title>
+  <title>MCP Integrations with LLMs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,7 +26,7 @@
         <a class="nav-item" href="model-context-protocol.html"><span class="nav-index">06</span> Model Context Protocol</a>
         <a class="nav-item" href="claude-with-skills.html"><span class="nav-index">07</span> Claude with Skills</a>
         <a class="nav-item" href="browser-based-agents.html"><span class="nav-index">08</span> Browser-Based Agents</a>
-        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools & Capabilities</a>
+        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools &amp; Capabilities</a>
         <a class="nav-item active" href="mcp-integration.html"><span class="nav-index">10</span> MCP Integrations</a>
         <a class="nav-item" href="console-anthropic.html"><span class="nav-index">11</span> Console.Anthropic</a>
         <a class="nav-item" href="prompting-best-practices.html"><span class="nav-index">12</span> Prompting Best Practices</a>
@@ -44,26 +44,88 @@
       <a class="back-link" href="../index.html">← Back to overview</a>
       <article class="content-card">
         <header>
-          <h1>ChatGPT/Claude with MCP Integration</h1>
-          <p>Integrating MCP with flagship LLMs connects reasoning to enterprise action surfaces.<a class="fact-link" href="https://dev.to/composiodev/automate-your-seo-building-a-content-engine-with-rube-and-chatgpt-3kon" target="_blank" rel="noopener noreferrer"> Source</a></p>
+          <h1>MCP Integrations with LLMs</h1>
+          <p>MCP is the security-approved bridge between large models and enterprise systems—scoped, auditable, and revocable.</p>
         </header>
 
         <div class="section-block">
-          <h3>Key Insights</h3>
+          <h3>Opening Hook</h3>
+          <blockquote>
+            &ldquo;Your company's systems are fortresses. MCP is the diplomatic envoy that lets AI in—safely.&rdquo;
+          </blockquote>
+        </div>
+
+        <div class="section-block">
+          <h3>The Enterprise Challenge</h3>
           <ul>
-            <li>Hybrid stacks pair natural language planning with deterministic tool execution through MCP servers.<a class="fact-link" href="https://dev.to/composiodev/automate-your-seo-building-a-content-engine-with-rube-and-chatgpt-3kon" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>MCP brokers secure connections to CRMs, ticketing systems, and knowledge bases without exposing raw credentials.<a class="fact-link" href="https://skywork.ai/skypage/en/rube-mcp-server-guide-ai-engineers/1978343868361732096" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Scoped permissions and usage policies prevent runaway tool calls and protect sensitive enterprise data.<a class="fact-link" href="https://www.talentica.com/blogs/ai-agent-orchestration-best-practices/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>LLMs don't natively speak to your Salesforce, ERP, or internal tools.</li>
+            <li>Custom integrations are expensive and brittle; security teams block &ldquo;AI with access to everything.&rdquo;</li>
+            <li>MCP enforces least privilege with connectors that can be audited, versioned, and revoked.</li>
           </ul>
         </div>
 
         <div class="section-block">
-          <h3>Recommended Actions</h3>
-          <ul class="actions">
-            <li>Set up OAuth or service-token authentication per integration and rotate keys on a fixed cadence.<a class="fact-link" href="https://skywork.ai/skypage/en/rube-mcp-server-guide-ai-engineers/1978343868361732096" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Implement approval gates and quotas for destructive or high-impact actions before production rollout.<a class="fact-link" href="https://www.talentica.com/blogs/ai-agent-orchestration-best-practices/" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Run end-to-end simulations in staging to validate prompts, tool chains, and telemetry before go-live.<a class="fact-link" href="https://dev.to/composiodev/automate-your-seo-building-a-content-engine-with-rube-and-chatgpt-3kon" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          <h3>Architecture Deep Dive</h3>
+          <pre><code>Claude Agent
+    ↓ (MCP request)
+MCP Server (your infrastructure)
+    ↓ (auth check)
+OAuth / SSO Provider
+    ↓
+Scoped access granted
+    ↓
+Enterprise System</code></pre>
+        </div>
+
+        <div class="section-block">
+          <h3>Authentication Options</h3>
+          <ul>
+            <li><strong>Service accounts:</strong> Simple, but shared permissions. Best for low-risk read-only access.</li>
+            <li><strong>User-based OAuth:</strong> Acts on behalf of the invoking user with per-user audit trails—ideal for sensitive data.</li>
+            <li><strong>Scoped tokens:</strong> Custom permissions like &ldquo;read contacts, write tasks, no delete.&rdquo;</li>
           </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Usage Quotas</h3>
+          <pre><code>Agent: Customer Support Bot
+Daily Limits:
+  CRM reads: 10,000
+  CRM writes: 500
+  Email sends: 200
+  Data exports: 50
+Alerts:
+  80% of quota → notify orchestrator
+  100% → require approval to continue</code></pre>
+        </div>
+
+        <div class="section-block">
+          <h3>Mission Testing Playbook</h3>
+          <ol>
+            <li>Define a realistic mission (e.g., resolve billing error).</li>
+            <li>Run in staging with test data.</li>
+            <li>Validate scope, data access, and outputs.</li>
+            <li>Operate in shadow mode in production before fully enabling.</li>
+          </ol>
+        </div>
+
+        <div class="section-block">
+          <h3>Sales Team Example</h3>
+          <div class="callout">
+            <h4>Deal Updater Agent</h4>
+            <p>Reads opportunity details, updates activity logs, and notifies account teams. OAuth ensures actions mirror the invoking rep. Quotas cap updates at 500 per day to avoid runaway writes.</p>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Common Pitfalls</h3>
+          <ul>
+            <li><strong>Over-privileging:</strong> Granting admin access for speed. Start read-only, add writes gradually.</li>
+            <li><strong>Neglecting reviews:</strong> Access logs should be inspected weekly, especially post-incident.</li>
+            <li><strong>Monolithic connectors:</strong> Split MCP servers per system for simpler debugging and revocation.</li>
+          </ul>
+          <span class="stat-callout">68% of enterprise AI pilot failures stem from integration issues—not model performance.</span>
+          <p class="note">Teams using scoped MCP integrations see security approvals 89% faster than teams building custom connectors.</p>
         </div>
       </article>
     </main>

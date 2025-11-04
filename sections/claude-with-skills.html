@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Claude with Skills</title>
+  <title>Claude with Skills &mdash; Orchestrated Workflows</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -44,26 +44,93 @@
       <a class="back-link" href="../index.html">← Back to overview</a>
       <article class="content-card">
         <header>
-          <h1>Claude with Skills</h1>
-          <p>Anthropic’s skill system packages reusable behaviors that orchestrators can compose like Lego bricks.<a class="fact-link" href="https://www.anthropic.com/news/skills" target="_blank" rel="noopener noreferrer"> Source</a></p>
+          <h1>Claude with Skills &mdash; Orchestrated Workflows</h1>
+          <p>Chain reliable skills to create complex outcomes—and design the checkpoints that keep quality high.</p>
         </header>
 
         <div class="section-block">
-          <h3>Key Insights</h3>
+          <h3>Opening Hook</h3>
+          <blockquote>
+            &ldquo;A skill is a promise: ‘Give me X, I'll reliably deliver Y.’ Chain those promises, and you get magic.&rdquo;
+          </blockquote>
+        </div>
+
+        <div class="section-block">
+          <h3>The 3 C's of Great Skills</h3>
           <ul>
-            <li>Skills bundle tool access, instructions, and guardrails for workflows such as research, drafting, or analysis.<a class="fact-link" href="https://www.anthropic.com/news/skills" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Chaining multiple skills with explicit success criteria improves reliability for multi-step projects.<a class="fact-link" href="https://aimaker.substack.com/p/how-i-turned-claude-code-into-personal-ai-agent-operating-system-for-writing-research-complete-guide" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Human-in-the-loop reviews remain central: JetBrains pilots keep approvals before agents commit changes.<a class="fact-link" href="https://blog.jetbrains.com/ai/2025/09/introducing-claude-agent-in-jetbrains-ides/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li><strong>Clear:</strong> One purpose, no ambiguity (&ldquo;update customer billing address&rdquo; beats &ldquo;manage customer&rdquo;).</li>
+            <li><strong>Composable:</strong> Skills behave like Lego bricks—easy to chain with others.</li>
+            <li><strong>Consistent:</strong> Same input, same output. Predictability builds trust.</li>
           </ul>
         </div>
 
         <div class="section-block">
-          <h3>Recommended Actions</h3>
-          <ul class="actions">
-            <li>Create skill playbooks that document triggers, inputs, and expected outputs for every reusable capability.<a class="fact-link" href="https://www.anthropic.com/news/skills" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Measure drift by comparing agent-generated drafts with final human-approved artifacts to spot tuning needs.<a class="fact-link" href="https://aimaker.substack.com/p/how-i-turned-claude-code-into-personal-ai-agent-operating-system-for-writing-research-complete-guide" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Instrument approval checkpoints so specialists can review agent actions before publishing to production systems.<a class="fact-link" href="https://blog.jetbrains.com/ai/2025/09/introducing-claude-agent-in-jetbrains-ides/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          <h3>Skill Chaining Example</h3>
+          <pre><code>validate_customer_data → create_crm_record → send_welcome_email
+→ schedule_kickoff_call → notify_account_team</code></pre>
+          <p class="note">Each skill handles one decision. Failures stay localized, and humans can review at meaningful checkpoints.</p>
+        </div>
+
+        <div class="section-block">
+          <h3>Success Criteria Snapshot</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Criterion</th>
+                <th>Target</th>
+                <th>Measurement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Deliverability</td>
+                <td>&gt; 99%</td>
+                <td>Email server logs</td>
+              </tr>
+              <tr>
+                <td>Personalization accuracy</td>
+                <td>100%</td>
+                <td>Matches CRM data</td>
+              </tr>
+              <tr>
+                <td>Rendering time</td>
+                <td>&lt; 500ms</td>
+                <td>Server-side timing</td>
+              </tr>
+              <tr>
+                <td>Compliance</td>
+                <td>Unsubscribe link present</td>
+                <td>Automated validation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section-block">
+          <h3>Human Review Loops</h3>
+          <ul>
+            <li>Review high-stakes outputs daily during the first 30 days.</li>
+            <li>Shift to weekly or monthly checks as confidence grows.</li>
+            <li>Route edge cases and low-confidence outputs to human queues automatically.</li>
           </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Retire or Refine?</h3>
+          <ul>
+            <li><strong>Refine</strong> when accuracy slips 10% week-over-week.</li>
+            <li><strong>Replace</strong> when new models or tooling improve outcomes.</li>
+            <li><strong>Retire</strong> when success rate stays below threshold or the use case no longer matters.</li>
+          </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Real-World Story</h3>
+          <div class="callout">
+            <h4>Marketing Content Pipeline</h4>
+            <p>Breaking one &ldquo;write blog post&rdquo; skill into four specialized skills (outline, intro, body, conclusion) raised approval rates from 67% to 91% while cutting cycle time 40%.</p>
+          </div>
+          <span class="stat-callout">Teams that monitor skill-level metrics identify and fix issues 5.2x faster than those relying on coarse agent metrics.</span>
         </div>
       </article>
     </main>

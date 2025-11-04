@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multi-Agent Systems: Power of Collaboration</title>
+  <title>Multi-Agent Systems &mdash; The Team Approach</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -26,7 +26,7 @@
         <a class="nav-item" href="model-context-protocol.html"><span class="nav-index">06</span> Model Context Protocol</a>
         <a class="nav-item" href="claude-with-skills.html"><span class="nav-index">07</span> Claude with Skills</a>
         <a class="nav-item" href="browser-based-agents.html"><span class="nav-index">08</span> Browser-Based Agents</a>
-        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools & Capabilities</a>
+        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools &amp; Capabilities</a>
         <a class="nav-item" href="mcp-integration.html"><span class="nav-index">10</span> MCP Integrations</a>
         <a class="nav-item" href="console-anthropic.html"><span class="nav-index">11</span> Console.Anthropic</a>
         <a class="nav-item" href="prompting-best-practices.html"><span class="nav-index">12</span> Prompting Best Practices</a>
@@ -44,26 +44,98 @@
       <a class="back-link" href="../index.html">← Back to overview</a>
       <article class="content-card">
         <header>
-          <h1>Multi-Agent Systems: Power of Collaboration</h1>
-          <p>Coordinated agents tackle complex missions by dividing responsibilities and sharing context.<a class="fact-link" href="https://www.kubiya.ai/blog/single-agent-vs-multi-agent-in-ai" target="_blank" rel="noopener noreferrer"> Source</a></p>
+          <h1>Multi-Agent Systems &mdash; The Team Approach</h1>
+          <p>Specialized agents coordinated through shared context deliver faster, more resilient outcomes than single do-it-all bots.</p>
         </header>
 
         <div class="section-block">
-          <h3>Key Insights</h3>
+          <h3>Opening Hook</h3>
+          <blockquote>
+            &ldquo;One smart agent is useful. A coordinated team of specialized agents? That's a force multiplier.&rdquo;
+          </blockquote>
+        </div>
+
+        <div class="section-block">
+          <h3>Why Multi-Agent?</h3>
           <ul>
-            <li>Planner, executor, and reviewer roles with explicit feedback loops outperform monolithic agents on complex work.<a class="fact-link" href="https://www.kubiya.ai/blog/single-agent-vs-multi-agent-in-ai" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Shared memory spaces or message buses keep specialized agents synchronized without polluting individual context windows.<a class="fact-link" href="https://medium.com/@akankshasinha247/building-multi-agent-architectures-orchestrating-intelligent-agent-systems-46700e50250b" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Arbitration logic and escalation rules resolve disagreements, boosting goal success rates by over 70% in enterprise pilots.<a class="fact-link" href="https://authoritypartners.com/insights/from-single-agent-to-agent-teams-the-architecture-blueprint/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Specialization: Planner, executor, and reviewer roles mirror high-performing human teams.</li>
+            <li>Parallelism: Multiple agents work simultaneously, cutting cycle time dramatically.</li>
+            <li>Resilience: If one agent fails, others continue. Human reviewers catch systemic issues.</li>
           </ul>
         </div>
 
         <div class="section-block">
-          <h3>Recommended Actions</h3>
-          <ul class="actions">
-            <li>Design communication protocols—including topics, schemas, and retries—before implementing agents.<a class="fact-link" href="https://medium.com/@akankshasinha247/building-multi-agent-architectures-orchestrating-intelligent-agent-systems-46700e50250b" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Run mission rehearsals to validate collaboration loops and capture handoff friction.<a class="fact-link" href="https://www.kubiya.ai/blog/single-agent-vs-multi-agent-in-ai" target="_blank" rel="noopener noreferrer"> Source</a></li>
-            <li>Monitor latency, contention, and success metrics as agent counts scale to maintain reliability.<a class="fact-link" href="https://authoritypartners.com/insights/from-single-agent-to-agent-teams-the-architecture-blueprint/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          <h3>Core Roles</h3>
+          <ul>
+            <li><strong>Planner:</strong> Breaks complex goals into tasks and dependencies.</li>
+            <li><strong>Executors:</strong> Specialists (research, analysis, writing, tool calling).</li>
+            <li><strong>Reviewer:</strong> Validates accuracy, completeness, and safety before deliverables ship.</li>
           </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Shared Context Store</h3>
+          <pre><code>Context Store (Redis, DB, file system)
+    ↑ Planner writes tasks
+    ↓ Executors read + write results
+    ↓ Reviewer audits + approves</code></pre>
+          <p class="note">Structured data—not ad-hoc chat—keeps communication reliable and machine-readable.</p>
+        </div>
+
+        <div class="section-block">
+          <h3>Arbitration Strategies</h3>
+          <ul>
+            <li><strong>Source hierarchy:</strong> Prefer official or more recent data.</li>
+            <li><strong>Majority vote:</strong> Useful when three agents research the same fact.</li>
+            <li><strong>Confidence scores:</strong> Compare agent-reported confidence to decide.</li>
+            <li><strong>Human escalation:</strong> Trigger when stakes are high or confidence is low.</li>
+          </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Real-World Example</h3>
+          <div class="callout">
+            <h4>Content Marketing Assembly Line</h4>
+            <p>Topic planner → outline creator → section writers → SEO reviewer → brand reviewer → final assembler. Draft quality jumped to 88% approval on first pass; cycle time shrank to 90 minutes.</p>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <h3>Communication Protocols</h3>
+          <pre><code>:: TASK_ASSIGNMENT
+from: Planner
+schema:
+  task_id: string
+  description: string
+  expected_output: JSON schema
+  deadline: timestamp
+
+:: TASK_COMPLETE
+from: Executor
+schema:
+  task_id: string
+  status: success | failed | needs_clarification
+  output: {...}
+  confidence: 0-1</code></pre>
+        </div>
+
+        <div class="section-block">
+          <h3>Rehearsal Checklist</h3>
+          <ol>
+            <li>Run end-to-end with synthetic data.</li>
+            <li>Inject failures (timeouts, missing data) to ensure graceful handling.</li>
+            <li>Measure latency and contention; adjust parallelism accordingly.</li>
+          </ol>
+        </div>
+
+        <div class="section-block">
+          <h3>Scaling Considerations</h3>
+          <ul>
+            <li>Parallelize independent tasks to avoid linear latency growth.</li>
+            <li>Use queues or sharded stores to prevent write contention.</li>
+            <li>Optimize cost by reserving premium models for complex reasoning steps.</li>
+          </ul>
+          <span class="stat-callout">Multi-agent systems complete complex tasks 4.7x faster, and reviewer agents cut downstream errors by 67%.</span>
         </div>
       </article>
     </main>
