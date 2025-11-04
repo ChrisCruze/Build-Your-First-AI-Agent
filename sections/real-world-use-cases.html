@@ -7,92 +7,66 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
-      line-height: 1.6;
-    }
-    .page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 64px 24px 96px;
-    }
-    h1 {
-      font-size: clamp(2.25rem, 4vw, 3rem);
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-    h2 {
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      color: #475569;
-      margin-bottom: 32px;
-    }
-    .card {
-      background: #ffffff;
-      border-radius: 24px;
-      box-shadow: 0 20px 45px -24px rgba(15, 23, 42, 0.25);
-      padding: 32px;
-      border: 1px solid #e2e8f0;
-    }
-    h3 {
-      font-size: 1.1rem;
-      margin-bottom: 16px;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0 0 32px;
-      display: grid;
-      gap: 12px;
-    }
-    li {
-      background: #f1f5f9;
-      border-radius: 16px;
-      padding: 16px 20px;
-      font-size: 0.98rem;
-    }
-    .actions li {
-      background: #eef2ff;
-      border: 1px solid #c7d2fe;
-    }
-    a.back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 24px;
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="page">
-    <a class="back-link" href="../index.html">← Back to overview</a>
-    <div class="card">
-      <h1>Real-World Use Cases</h1>
-      <h2>High-leverage workflows demonstrate tangible value from agent deployments.</h2>
-      <div>
-        <h3>Key Insights</h3>
-        <ul>
-          <li>Newsletter automation and meeting follow-ups reclaim hours of manual effort.</li>
-          <li>Competitor analysis, IT desks, and finance ops show cross-department reach.</li>
-          <li>BMAD documentation agents ensure code, design, and product stay aligned.</li>
-        </ul>
+  <div class="app-shell">
+    <nav>
+      <div class="brand">
+        <h1><a href="../index.html">Agentic Revolution</a></h1>
+        <span>Explore extended notes for each presentation slide.</span>
       </div>
-      <div>
-        <h3>Recommended Actions</h3>
-        <ul class="actions">
-          <li>Catalogue existing automations and assess where agents can expand autonomy.</li>
-          <li>Interview operators to surface hidden knowledge that agents must learn.</li>
-          <li>Create success metrics for each use case before launch.</li>
-        </ul>
+      <div class="nav-group">
+        <span class="nav-label">Slides</span>
+        <a class="nav-item" href="agentic-revolution-intro.html"><span class="nav-index">01</span> The Agentic Revolution</a>
+        <a class="nav-item" href="why-it-matters.html"><span class="nav-index">02</span> Why It Matters</a>
+        <a class="nav-item" href="what-is-an-ai-agent.html"><span class="nav-index">03</span> What Is an AI Agent?</a>
+        <a class="nav-item active" href="real-world-use-cases.html"><span class="nav-index">04</span> Real-World Use Cases</a>
+        <a class="nav-item" href="retrieval-augmented-generation.html"><span class="nav-index">05</span> Retrieval-Augmented Generation</a>
+        <a class="nav-item" href="model-context-protocol.html"><span class="nav-index">06</span> Model Context Protocol</a>
+        <a class="nav-item" href="claude-with-skills.html"><span class="nav-index">07</span> Claude with Skills</a>
+        <a class="nav-item" href="browser-based-agents.html"><span class="nav-index">08</span> Browser-Based Agents</a>
+        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools & Capabilities</a>
+        <a class="nav-item" href="mcp-integration.html"><span class="nav-index">10</span> MCP Integrations</a>
+        <a class="nav-item" href="console-anthropic.html"><span class="nav-index">11</span> Console.Anthropic</a>
+        <a class="nav-item" href="prompting-best-practices.html"><span class="nav-index">12</span> Prompting Best Practices</a>
+        <a class="nav-item" href="multi-agent-systems.html"><span class="nav-index">13</span> Multi-Agent Systems</a>
+        <a class="nav-item" href="orchestrator-role.html"><span class="nav-index">14</span> Orchestrator Role</a>
+        <a class="nav-item" href="no-code-powerhouses.html"><span class="nav-index">15</span> No-Code Powerhouses</a>
+        <a class="nav-item" href="agents-md.html"><span class="nav-index">16</span> Agents.md Standard</a>
+        <a class="nav-item" href="bmad-method.html"><span class="nav-index">17</span> BMAD Method</a>
+        <a class="nav-item" href="become-agentic-orchestrator.html"><span class="nav-index">18</span> Become an Orchestrator</a>
+        <a class="nav-item" href="qa-and-resources.html"><span class="nav-index">19</span> Q&amp;A &amp; Resources</a>
       </div>
-    </div>
+    </nav>
+
+    <main class="main-content">
+      <a class="back-link" href="../index.html">← Back to overview</a>
+      <article class="content-card">
+        <header>
+          <h1>Real-World Use Cases</h1>
+          <p>High-leverage workflows demonstrate tangible value from agent deployments across industries.<a class="fact-link" href="https://www.bcg.com/publications/2025/how-agentic-ai-is-transforming-enterprise-platforms" target="_blank" rel="noopener noreferrer"> Source</a></p>
+        </header>
+
+        <div class="section-block">
+          <h3>Key Insights</h3>
+          <ul>
+            <li>Newsletter automation and meeting follow-ups now reclaim hours each week through Claude Code sub-agents.<a class="fact-link" href="https://aimaker.substack.com/p/how-i-turned-claude-code-into-personal-ai-agent-operating-system-for-writing-research-complete-guide" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>IT service desks, finance teams, and customer ops use agents to cut ticket backlogs and cycle time simultaneously.<a class="fact-link" href="https://www.tredence.com/blog/best-ai-agents-2025" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>BMAD documentation agents keep product, design, and engineering aligned through version-controlled briefs.<a class="fact-link" href="https://medium.com/@courtlinholt/mastering-the-bmad-method-a-revolutionary-approach-to-agile-ai-driven-development-for-modern-e7be588b8d94" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Recommended Actions</h3>
+          <ul class="actions">
+            <li>Audit repetitive workflows and rank them by manual effort before delegating steps to autonomous agents.<a class="fact-link" href="https://www.haptik.ai/blog/chatgpt-agent-enterprise-ai-future" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Interview operators to capture tacit knowledge and convert it into prompts, checklists, and guardrails for agents.<a class="fact-link" href="https://medium.com/@akankshasinha247/building-multi-agent-architectures-orchestrating-intelligent-agent-systems-46700e50250b" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Define success metrics—cycle time, accuracy, satisfaction—before launch to measure agent ROI clearly.<a class="fact-link" href="https://www.bcg.com/publications/2025/how-agentic-ai-is-transforming-enterprise-platforms" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          </ul>
+        </div>
+      </article>
+    </main>
   </div>
 </body>
 </html>
