@@ -7,92 +7,66 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
-      line-height: 1.6;
-    }
-    .page {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 64px 24px 96px;
-    }
-    h1 {
-      font-size: clamp(2.25rem, 4vw, 3rem);
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-    h2 {
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      color: #475569;
-      margin-bottom: 32px;
-    }
-    .card {
-      background: #ffffff;
-      border-radius: 24px;
-      box-shadow: 0 20px 45px -24px rgba(15, 23, 42, 0.25);
-      padding: 32px;
-      border: 1px solid #e2e8f0;
-    }
-    h3 {
-      font-size: 1.1rem;
-      margin-bottom: 16px;
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin: 0 0 32px;
-      display: grid;
-      gap: 12px;
-    }
-    li {
-      background: #f1f5f9;
-      border-radius: 16px;
-      padding: 16px 20px;
-      font-size: 0.98rem;
-    }
-    .actions li {
-      background: #eef2ff;
-      border: 1px solid #c7d2fe;
-    }
-    a.back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 24px;
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="page">
-    <a class="back-link" href="../index.html">← Back to overview</a>
-    <div class="card">
-      <h1>Multi-Agent Systems: Power of Collaboration</h1>
-      <h2>Coordinated agents tackle complex missions by dividing responsibilities and sharing context.</h2>
-      <div>
-        <h3>Key Insights</h3>
-        <ul>
-          <li>Architect planner, executor, and reviewer roles with feedback channels.</li>
-          <li>Use shared memory spaces or message buses for synchronized state.</li>
-          <li>Establish arbitration logic when agents disagree or encounter conflicts.</li>
-        </ul>
+  <div class="app-shell">
+    <nav>
+      <div class="brand">
+        <h1><a href="../index.html">Agentic Revolution</a></h1>
+        <span>Explore extended notes for each presentation slide.</span>
       </div>
-      <div>
-        <h3>Recommended Actions</h3>
-        <ul class="actions">
-          <li>Design communication protocols (topics, message formats) before coding.</li>
-          <li>Simulate mission rehearsals to validate collaboration loops.</li>
-          <li>Monitor latency and contention as agent counts increase.</li>
-        </ul>
+      <div class="nav-group">
+        <span class="nav-label">Slides</span>
+        <a class="nav-item" href="agentic-revolution-intro.html"><span class="nav-index">01</span> The Agentic Revolution</a>
+        <a class="nav-item" href="why-it-matters.html"><span class="nav-index">02</span> Why It Matters</a>
+        <a class="nav-item" href="what-is-an-ai-agent.html"><span class="nav-index">03</span> What Is an AI Agent?</a>
+        <a class="nav-item" href="real-world-use-cases.html"><span class="nav-index">04</span> Real-World Use Cases</a>
+        <a class="nav-item" href="retrieval-augmented-generation.html"><span class="nav-index">05</span> Retrieval-Augmented Generation</a>
+        <a class="nav-item" href="model-context-protocol.html"><span class="nav-index">06</span> Model Context Protocol</a>
+        <a class="nav-item" href="claude-with-skills.html"><span class="nav-index">07</span> Claude with Skills</a>
+        <a class="nav-item" href="browser-based-agents.html"><span class="nav-index">08</span> Browser-Based Agents</a>
+        <a class="nav-item" href="tools-and-capabilities.html"><span class="nav-index">09</span> Tools & Capabilities</a>
+        <a class="nav-item" href="mcp-integration.html"><span class="nav-index">10</span> MCP Integrations</a>
+        <a class="nav-item" href="console-anthropic.html"><span class="nav-index">11</span> Console.Anthropic</a>
+        <a class="nav-item" href="prompting-best-practices.html"><span class="nav-index">12</span> Prompting Best Practices</a>
+        <a class="nav-item active" href="multi-agent-systems.html"><span class="nav-index">13</span> Multi-Agent Systems</a>
+        <a class="nav-item" href="orchestrator-role.html"><span class="nav-index">14</span> Orchestrator Role</a>
+        <a class="nav-item" href="no-code-powerhouses.html"><span class="nav-index">15</span> No-Code Powerhouses</a>
+        <a class="nav-item" href="agents-md.html"><span class="nav-index">16</span> Agents.md Standard</a>
+        <a class="nav-item" href="bmad-method.html"><span class="nav-index">17</span> BMAD Method</a>
+        <a class="nav-item" href="become-agentic-orchestrator.html"><span class="nav-index">18</span> Become an Orchestrator</a>
+        <a class="nav-item" href="qa-and-resources.html"><span class="nav-index">19</span> Q&amp;A &amp; Resources</a>
       </div>
-    </div>
+    </nav>
+
+    <main class="main-content">
+      <a class="back-link" href="../index.html">← Back to overview</a>
+      <article class="content-card">
+        <header>
+          <h1>Multi-Agent Systems: Power of Collaboration</h1>
+          <p>Coordinated agents tackle complex missions by dividing responsibilities and sharing context.<a class="fact-link" href="https://www.kubiya.ai/blog/single-agent-vs-multi-agent-in-ai" target="_blank" rel="noopener noreferrer"> Source</a></p>
+        </header>
+
+        <div class="section-block">
+          <h3>Key Insights</h3>
+          <ul>
+            <li>Planner, executor, and reviewer roles with explicit feedback loops outperform monolithic agents on complex work.<a class="fact-link" href="https://www.kubiya.ai/blog/single-agent-vs-multi-agent-in-ai" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Shared memory spaces or message buses keep specialized agents synchronized without polluting individual context windows.<a class="fact-link" href="https://medium.com/@akankshasinha247/building-multi-agent-architectures-orchestrating-intelligent-agent-systems-46700e50250b" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Arbitration logic and escalation rules resolve disagreements, boosting goal success rates by over 70% in enterprise pilots.<a class="fact-link" href="https://authoritypartners.com/insights/from-single-agent-to-agent-teams-the-architecture-blueprint/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          </ul>
+        </div>
+
+        <div class="section-block">
+          <h3>Recommended Actions</h3>
+          <ul class="actions">
+            <li>Design communication protocols—including topics, schemas, and retries—before implementing agents.<a class="fact-link" href="https://medium.com/@akankshasinha247/building-multi-agent-architectures-orchestrating-intelligent-agent-systems-46700e50250b" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Run mission rehearsals to validate collaboration loops and capture handoff friction.<a class="fact-link" href="https://www.kubiya.ai/blog/single-agent-vs-multi-agent-in-ai" target="_blank" rel="noopener noreferrer"> Source</a></li>
+            <li>Monitor latency, contention, and success metrics as agent counts scale to maintain reliability.<a class="fact-link" href="https://authoritypartners.com/insights/from-single-agent-to-agent-teams-the-architecture-blueprint/" target="_blank" rel="noopener noreferrer"> Source</a></li>
+          </ul>
+        </div>
+      </article>
+    </main>
   </div>
 </body>
 </html>
